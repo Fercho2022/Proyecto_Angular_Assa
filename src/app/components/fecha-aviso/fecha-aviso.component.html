@@ -1,0 +1,18 @@
+<form [formGroup]="fechaAvisoForm">
+<span class="p-float-label">
+  <p-calendar
+  [showTime]="true"
+    dateFormat="yy/mm/dd"
+    styleClass="large"
+    [showIcon]="true"
+    formControlName="fechaAvisoIntervencion"
+    display="chip"
+    (onSelect)="onFechaAvisoIntervencionChanged()"
+  ></p-calendar>
+
+
+
+
+  <label>Fecha y hora del aviso</label>
+</span>
+</form>

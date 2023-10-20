@@ -1,0 +1,66 @@
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="titulo mb-3 ">{{titulo1 | uppercase}}</h5>
+
+<form [formGroup]="form5" (ngSubmit)="guardarEstacion()">
+
+
+  <div class="row mt-10">
+    <span class="p-float-label">
+      <p-dropdown
+        [options]="distritos"
+        optionLabel="label"
+        [showClear]="true"
+        [style]="{ minWidth: '100%', 'padding-top': '-5px', maxWidth: '100%', }"
+        (onChange)="seleccionDistrito()"
+        formControlName="distrito"
+        placeholder="Seleccionar distrito"
+      >
+        <ng-template let-group pTemplate="group">
+          <div class="flex align-items-center">
+            <span>{{ group.label }}</span>
+          </div>
+        </ng-template>
+      </p-dropdown>
+
+      <label style="margin-left: 10px;">Distrito</label>
+    </span>
+  </div>
+  <div class="row mt-4">
+    <span class="p-float-label">
+      <p-dropdown
+        [options]="arrayEstaciones"
+        optionLabel="label"
+        [showClear]="true"
+        [style]="{ minWidth: '100%', 'padding-top': '-5px', maxWidth: '100%', }"
+        (onChange)="seleccionEstacion()"
+
+        placeholder="Seleccionar estación"
+      >
+        <ng-template let-group pTemplate="group">
+          <div class="flex align-items-center">
+            <span>{{ group.label }}</span>
+          </div>
+        </ng-template>
+      </p-dropdown>
+
+      <label style="margin-left: 10px;">Estación</label>
+    </span>
+  </div>
+
+<div style="margin-top: 15px;"></div>
+
+
+
+   <app-agregar [titulo]="'Agregar estación'" [escribirCampo]="'Agregar estacion'" [form]="form5" [campoInput]="campoInput5" [campo]="'estacion'" ></app-agregar>
+
+
+
+
+
+
+</form>
+
+  </div>
+</div>

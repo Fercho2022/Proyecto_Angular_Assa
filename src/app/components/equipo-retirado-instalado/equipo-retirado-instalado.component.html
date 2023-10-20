@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-lg-4">
+    <app-equipo-falla
+      [listDatos]="listDatos"
+      [equiposEnFalla]="equiposEnFalla"
+      (arraynewItemEvent)="capturaArray5($event)"
+      [rellenarCampo]="rellenarCampo1"
+      [etiquetaLabel]="etiquetaLabel1"
+    ></app-equipo-falla>
+  </div>
+  <div class="col-lg-2">
+    <app-equipos-especifico-falla
+      [etiquetaLabel]="etiquetaLabel2"
+      [rellenarCampo]="rellenarCampo2"
+      [arrayfallas1]="arrayfallas5"
+    ></app-equipos-especifico-falla>
+  </div>
+  <div class="col-lg-3">
+    <app-imput-serie
+      [noRetiraEquipo]="noRetiraEquipo"
+      [etiquetaLabel]="etiquetaLabel3"
+    ></app-imput-serie>
+  </div>
+  <div class="col-lg-2">
+    <app-estado-equipo
+      [rellenarCampo]="rellenarCampo4"
+      [estadoEquipos]="estadoEquipos"
+      [etiquetaLabel]="etiquetaLabel4"
+    ></app-estado-equipo>
+  </div>
+  <div class="col-lg-1">
+    <div class="row mtop" *ngIf="retiraBotonAgregar">
+      <div class="row mtop1">
+        <p-button
+          label="Agregar"
+          styleClass="p-button-rounded tamaño1"
+          (click)="agregarRetiradoInstalado()"
+        ></p-button>
+      </div>
+
+      <div class="row" *ngIf="retiraBotonEliminar">
+        <p-button
+          label="Eliminar"
+          styleClass="p-button-rounded p-button-danger tamaño1"
+          (click)="eliminarRetiradoInstalado()"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+.invalid-icon {
+  color: red;
+  cursor: pointer;
+}
+
+.valid-icon {
+  color: green; /* o el color que desees para el icono válido */
+  cursor: pointer;
+}

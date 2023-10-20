@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="titulo mb-3 ">{{titulo | uppercase}}</h5>
+
+<form [formGroup]="form" (ngSubmit)="guardarCampo()">
+<div class="input-group input-group-lg mb-3">
+  <span class="input-group-text" >
+    <i class="pi pi-map-marker"
+     [ngClass]="{'green-icon' : form.get('{{campo}}')?.valid, 'red-icon' : form.get('{{campo}}')?.invalid && this.form.get('{{campo}}')?.touched}"
+     >
+    </i>
+  </span>
+
+  <input type="text" class="form-control" [formControlName]="campoInput" [placeholder]="escribirCampo" >
+</div>
+
+
+
+ <div class="d-grid gap-2 ">
+
+<button [disabled]="form.invalid" class="btn btn-success btn-lg" type="submit">
+  <i class="pi pi-database"></i>
+  &nbsp; Aceptar
+</button>
+
+ </div>
+
+</form>
+
+  </div>
+</div>
+

@@ -1,0 +1,15 @@
+<form [formGroup]="fechaFinIntervencionForm">
+<span class="p-float-label">
+  <p-calendar
+    [showTime]="true"
+    dateFormat="yy/mm/dd"
+    styleClass="large"
+    [showIcon]="true"
+    display="chip"
+    formControlName="fechaFinIntervencion"
+    (onSelect)="onFechaFinIntervencionChanged()"
+
+  ></p-calendar>
+  <label>Fecha y hora fin de la intervencion</label>
+</span>
+</form>

@@ -1,0 +1,529 @@
+<form [formGroup]="intervencionForm" (ngSubmit)="agregarIntervencion()">
+  <div class="container text-center">
+    <div class="row mt-2">
+      <h4>Registrar Intervención</h4>
+      <div class="row justify-content-md-center">
+        <div class="col-lg-12">
+          <div class="card" style="margin-top: 10px">
+            <div class="card-body" style="margin-top: 8px">
+              <div class="row">
+                <div class="col col-5">
+                  <app-nro-intervencion
+                   [nroIntervencionForm]="intervencionForm"
+                   (nroIntervencionChanged)="updateNroIntervencionValue($event)"
+                   ></app-nro-intervencion>
+                </div>
+
+                <div class="col col-3">
+                  <app-fecha-aviso
+                  [fechaAvisoForm]="intervencionForm"
+                  (fechaAvisoChanged)="updateFechaAvisoValue($event)"
+
+
+                  ></app-fecha-aviso>
+                </div>
+
+                <div class="col col-4">
+                  <app-fecha-fin-intervencion
+                  [fechaFinIntervencionForm]="intervencionForm"
+                  (fechaFinIntervencionChanged)="updateFechaFinValue($event)"
+
+                  ></app-fecha-fin-intervencion>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-1">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-12">
+          <div class="card" style="margin-top: 10px">
+            <div class="card-body" style="margin-top: 8px">
+              <div class="row">
+                <div class="col-lg-2">
+                  <app-distrito-falla
+                    [etiquetaLabel]="'Distrito falla'"
+                    [rellenarCampo1]="'Seleccionar distrito'"
+                    (arraynewItenEvent3)="capturaPersonalDistritos($event)"
+                    (arraynewItenEvent1)="capturaEstaciones($event)"
+                    [distritos]="distritos"
+                    [listDatos]="listDatos"
+
+                  ></app-distrito-falla>
+
+                  <div class="row mtop">
+                    <div class="col col-lg-12">
+                      <p-button
+                        label="Agregar campos"
+                        styleClass="p-button-raised p-button-text tamaño2"
+                        routerLink="/dashboard/agregar-campo"
+                        (click)="AgregarDatosFirebase()"
+                      ></p-button>
+                      <p-button
+                      label="Agregar campos"
+                      styleClass="p-button-raised p-button-text tamaño2"
+                      routerLink="/dashboard/agregar-campo"
+                      (click)="agregarIntervencion()"
+                    ></p-button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-2">
+                  <app-estacion-falla
+                    [etiquetaLabel]="'Estación falla'"
+                    [estaciones]="estaciones"
+                    [rellenarCampo]="'Seleccionar estación'"
+                  ></app-estacion-falla>
+                </div>
+
+                <div class="col col-lg-8">
+                  <div class="row">
+                    <app-agregar-equipos-fallan
+                      [estadoEquipos]="estadoEquipos"
+                      [listDatos]="listDatos"
+                      [equiposEnFalla]="equiposEnFalla"
+                      [rellenarCampo1]="'Seleccionar equipo 1 falla'"
+                      [etiquetaLabel1]="'Equipo 1 falla'"
+                      [rellenarCampo2]="
+                        'Seleccionar especificidad equipo 1 falla'
+                      "
+                      [etiquetaLabel2]="'Especificidad equipo 1 falla'"
+                      [rellenarCampo3]="'Seleccionar estado equipo 1'"
+                      [etiquetaLabel3]="'Estado equipo 1'"
+                      (agregarEquipoFallaEvent)="
+                        capturaEquipoFallaEvent2($event)
+                      "
+                      (iluminarBotonAgregarEvent)="
+                        iluminarBotoneAgregar2($event)
+                      "
+                      (iluminarBotonEliminarEvent)="
+                        iluminarBotoneEliminar2($event)
+                      "
+                      [rehacerBotonAgregar]="rehacerBotonAgrega1"
+                    ></app-agregar-equipos-fallan>
+                  </div>
+
+                  <div style="margin-top: 25px" *ngIf="agregarEquipoFalla2">
+                    <app-agregar-equipos-fallan
+                      [equiposEnFalla]="equiposEnFalla"
+                      [estadoEquipos]="estadoEquipos"
+                      [listDatos]="listDatos"
+                      [rellenarCampo1]="'Seleccionar equipo 2 falla'"
+                      [etiquetaLabel1]="'Equipo 2 falla'"
+                      [rellenarCampo2]="
+                        'Seleccionar especificidad equipo 2 falla'
+                      "
+                      [etiquetaLabel2]="'Especificidad equipo 2 falla'"
+                      [rellenarCampo3]="'Seleccionar estado equipo 2'"
+                      [etiquetaLabel3]="'Estado equipo 2'"
+                      (agregarEquipoFallaEvent)="
+                        capturaEquipoFallaEvent3($event)
+                      "
+                      (eliminarEquipoFallaEvent)="
+                        eliminarEquipoFallaEvent2($event)
+                      "
+                      (iluminarBotonAgregarEvent)="
+                        iluminarBotoneAgregar3($event)
+                      "
+                      (iluminarBotonEliminarEvent)="
+                        iluminarBotoneEliminar3($event)
+                      "
+                      [rehacerBotonEliminar]="iluminarBotonEliminar2"
+                      [rehacerBotonAgregar]="iluminarBotonAgregar2"
+                    ></app-agregar-equipos-fallan>
+                  </div>
+                  <div style="margin-top: 25px" *ngIf="agregarEquipoFalla3">
+                    <app-agregar-equipos-fallan
+                      [equiposEnFalla]="equiposEnFalla"
+                      [estadoEquipos]="estadoEquipos"
+                      [listDatos]="listDatos"
+                      [rellenarCampo1]="'Seleccionar equipo 3 falla'"
+                      [etiquetaLabel1]="'Equipo 3 falla'"
+                      [rellenarCampo2]="
+                        'Seleccionar especificidad equipo 3 falla'
+                      "
+                      [etiquetaLabel2]="'Especificidad equipo 3 falla'"
+                      [rellenarCampo3]="'Seleccionar estado equipo 3'"
+                      [etiquetaLabel3]="'Estado equipo 3'"
+                      (eliminarEquipoFallaEvent)="eliminarEquipoFallaEvent3($event)"
+                      (iluminarBotonAgregarEvent)="
+                        iluminarBotoneAgregar2($event)
+                      "
+                      (iluminarBotonEliminarEvent)="
+                        iluminarBotoneEliminar2($event)
+                      "
+                      [rehacerBotonEliminar]="iluminarBotoneEliminado3"
+                    ></app-agregar-equipos-fallan>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-1">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-12">
+          <div class="card" style="margin-top: 10px">
+            <div class="card-body" style="margin-top: 8px">
+              <div class="row">
+                <div class="col col-4">
+                  <app-aviso-falla-assa
+                    [rellenarCampo]="'Seleccionar personal aviso de falla'"
+                    [etiquetaLabel]="'Aviso de Falla por parte de ASSA'"
+                    [personalDistritos]="personalDistritos"
+                  ></app-aviso-falla-assa>
+                </div>
+                <div class="col col-4">
+                  <app-recepcion-aviso-atp
+                    [rellenarCampo]="'Seleccionar personal aviso de falla'"
+                    [personalATP]="PersonalATP"
+                    [etiquetaLabel]="'Recepción del aviso por parte de ATP'"
+                  ></app-recepcion-aviso-atp>
+                </div>
+                <div class="col col-4">
+                  <app-personal-atp-asistio
+                    [etiquetaLabel]="'Personal de ATP que asistió'"
+                    [personalATP]="PersonalATP"
+                  ></app-personal-atp-asistio>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-1">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-12">
+          <div class="card" style="margin-top: 10px">
+            <div class="card-body" style="margin-top: 8px">
+              <app-equipo-retirado-instalado
+                [listDatos]="listDatos"
+                [equiposEnFalla]="equiposEnFalla"
+                [noRetiraEquipo]="noRetiraEquipo"
+                [estadoEquipos]="estadoEquipos"
+                (agregarEquipoRetiradoEvent)="
+                  capturaEquipoRetiradoEvent2($event)
+                "
+                (rehacerBotonEliminarEvent)="rehacerBotonEliminar2($event)"
+                (rehacerBotonAgregarEvent)="rehacerBotonAgregar2($event)"
+                [rehacerBotonAgregar]="rehacerBotonAgrega1"
+                [rellenarCampo1]="'Seleccionar equipo retirado'"
+                [rellenarCampo2]="'Seleccionar modelo retirado'"
+                [rellenarCampo4]="'Seleccionar estado'"
+                [etiquetaLabel1]="'Equipo retirado 1'"
+                [etiquetaLabel2]="'modelo retirado 1'"
+                [etiquetaLabel3]="'Nro de serie retirado 1'"
+                [etiquetaLabel4]="'Estado retirado 1'"
+              ></app-equipo-retirado-instalado>
+
+              <div style="margin-top: 25px" *ngIf="equipoRetirado2">
+                <app-equipo-retirado-instalado
+                  [listDatos]="listDatos"
+                  [equiposEnFalla]="equiposEnFalla"
+                  [noRetiraEquipo]="noRetiraEquipo"
+                  [estadoEquipos]="estadoEquipos"
+                  (agregarEquipoRetiradoEvent)="
+                    capturaEventEquipoRetirado3($event)
+                  "
+                  (eliminarEquipoRetiradoEvent)="
+                    eliminarEventEquipoRetirado2($event)
+                  "
+                  (rehacerBotonAgregarEvent)="rehacerBotonAgregar3($event)"
+                  (rehacerBotonEliminarEvent)="rehacerBotonEliminar3($event)"
+                  [rehacerBotonAgregar]="rehacerBotonAgrega2"
+                  [rehacerBotonEliminar]="rehacerBotoneEliminado2"
+                  [rellenarCampo1]="'Seleccionar equipo retirado'"
+                  [rellenarCampo2]="'Seleccionar modelo retirado'"
+                  [rellenarCampo4]="'Seleccionar estado'"
+                  [etiquetaLabel1]="'Equipo retirado 2'"
+                  [etiquetaLabel2]="'modelo retirado 2'"
+                  [etiquetaLabel3]="'Nro de serie retirado 2'"
+                  [etiquetaLabel4]="'Estado retirado 2'"
+                ></app-equipo-retirado-instalado>
+              </div>
+              <div style="margin-top: 25px" *ngIf="equipoRetirado3">
+                <app-equipo-retirado-instalado
+                  [listDatos]="listDatos"
+                  [equiposEnFalla]="equiposEnFalla"
+                  [noRetiraEquipo]="noRetiraEquipo"
+                  [estadoEquipos]="estadoEquipos"
+                  (eliminarEquipoRetiradoEvent)="
+                    eliminarEventEquipoRetirado3($event)
+                  "
+                  (rehacerBotonEliminarEvent)="rehacerBotonEliminar2($event)"
+                  (rehacerBotonAgregarEvent)="rehacerBotonAgregar2($event)"
+                  [rehacerBotonAgregar]="rehacerBotonAgrega3"
+                  [rehacerBotonEliminar]="rehacerBotoneEliminado3"
+                  [rellenarCampo1]="'Seleccionar equipo retirado'"
+                  [rellenarCampo2]="'Seleccionar modelo retirado'"
+                  [rellenarCampo4]="'Seleccionar estado'"
+                  [etiquetaLabel1]="'Equipo retirado 3'"
+                  [etiquetaLabel2]="'modelo retirado 3'"
+                  [etiquetaLabel3]="'Nro de serie retirado 3'"
+                  [etiquetaLabel4]="'Estado retirado 3'"
+                ></app-equipo-retirado-instalado>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-1">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-12">
+          <div class="card" style="margin-top: 10px">
+            <div class="card-body" style="margin-top: 8px">
+              <app-equipo-retirado-instalado
+                [listDatos]="listDatos"
+                [equiposEnFalla]="equiposEnFalla"
+                [noRetiraEquipo]="noRetiraEquipo"
+                [estadoEquipos]="estadoEquipos"
+                (agregarEquipoRetiradoEvent)="
+                  capturaEquipoInstaladoEvent2($event)
+                "
+                (rehacerBotonEliminarEvent)="rehacerBotonEliminar4($event)"
+                (rehacerBotonAgregarEvent)="rehacerBotonAgregar4($event)"
+                [rehacerBotonAgregar]="rehacerBotonAgrega6"
+                [rellenarCampo1]="'Seleccionar equipo instalado'"
+                [rellenarCampo2]="'Seleccionar modelo instalado'"
+                [rellenarCampo4]="'Seleccionar estado'"
+                [etiquetaLabel1]="'Equipo instalado 1'"
+                [etiquetaLabel2]="'modelo instalado 1'"
+                [etiquetaLabel3]="'Nro de serie instalado 1'"
+                [etiquetaLabel4]="'Estado instalado 1'"
+              ></app-equipo-retirado-instalado>
+              <div style="margin-top: 25px" *ngIf="equipoInstalado2">
+                <app-equipo-retirado-instalado
+                  [listDatos]="listDatos"
+                  [equiposEnFalla]="equiposEnFalla"
+                  [noRetiraEquipo]="noRetiraEquipo"
+                  [estadoEquipos]="estadoEquipos"
+                  (agregarEquipoRetiradoEvent)="
+                    capturaEventEquipoInstalado3($event)
+                  "
+                  (eliminarEquipoRetiradoEvent)="
+                    eliminarEventEquipoInstalado2($event)
+                  "
+                  (rehacerBotonAgregarEvent)="rehacerBotonAgregar5($event)"
+                  (rehacerBotonEliminarEvent)="rehacerBotonEliminar5($event)"
+                  [rehacerBotonAgregar]="rehacerBotonAgrega4"
+                  [rehacerBotonEliminar]="rehacerBotoneEliminado4"
+                  [rellenarCampo1]="'Seleccionar equipo instalado'"
+                  [rellenarCampo2]="'Seleccionar modelo instalado'"
+                  [rellenarCampo4]="'Seleccionar estado'"
+                  [etiquetaLabel1]="'Equipo instalado 2'"
+                  [etiquetaLabel2]="'modelo instalado 2'"
+                  [etiquetaLabel3]="'Nro de serie instalado 2'"
+                  [etiquetaLabel4]="'Estado instalado 2'"
+                ></app-equipo-retirado-instalado>
+              </div>
+              <div style="margin-top: 25px" *ngIf="equipoInstalado3">
+                <app-equipo-retirado-instalado
+                  [listDatos]="listDatos"
+                  [equiposEnFalla]="equiposEnFalla"
+                  [noRetiraEquipo]="noRetiraEquipo"
+                  [estadoEquipos]="estadoEquipos"
+                  (eliminarEquipoRetiradoEvent)="
+                    eliminarEventEquipoInstalado3($event)
+                  "
+                  (rehacerBotonEliminarEvent)="rehacerBotonEliminar4($event)"
+                  (rehacerBotonAgregarEvent)="rehacerBotonAgregar4($event)"
+                  [rehacerBotonAgregar]="rehacerBotonAgrega3"
+                  [rehacerBotonEliminar]="rehacerBotoneEliminado5"
+                  [rellenarCampo1]="'Seleccionar equipo instalado'"
+                  [rellenarCampo2]="'Seleccionar modelo instalado'"
+                  [rellenarCampo4]="'Seleccionar estado'"
+                  [etiquetaLabel1]="'Equipo instalado 3'"
+                  [etiquetaLabel2]="'modelo instalado 3'"
+                  [etiquetaLabel3]="'Nro de serie instalado 3'"
+                  [etiquetaLabel4]="'Estado instalado 3'"
+                ></app-equipo-retirado-instalado>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-1">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-12">
+          <div class="card" style="margin-top: 10px">
+            <div class="card-body" style="margin-top: 8px">
+              <app-equipo-retirado-instalado
+                [listDatos]="listDatos"
+                [equiposEnFalla]="equiposEnFalla"
+                [noRetiraEquipo]="noRetiraEquipo"
+                [estadoEquipos]="estadoEquipos"
+
+                (agregarEquipoRetiradoEvent)="capturaEquipoEntregadoEvent1($event)"
+
+                (rehacerBotonEliminarEvent)="rehacerBotonEliminar6($event)"
+                (rehacerBotonAgregarEvent)="rehacerBotonAgregar6($event)"
+
+                [rehacerBotonAgregar]="rehacerBotonAgrega9"
+
+
+                [rellenarCampo1]="'Seleccionar equipo entregado'"
+                [rellenarCampo2]="'Seleccionar modelo entregado'"
+                [rellenarCampo4]="'Seleccionar estado'"
+                [etiquetaLabel1]="'Equipo 1 entregado por ATP a distrito'"
+                [etiquetaLabel2]="'modelo entregado '"
+                [etiquetaLabel3]="'Nro de serie entregado 1'"
+                [etiquetaLabel4]="'Estado entregado 1'"
+              ></app-equipo-retirado-instalado>
+              <div style="margin-top: 25px" *ngIf="equipoEntregado2">
+              <app-equipo-retirado-instalado
+                [listDatos]="listDatos"
+                [equiposEnFalla]="equiposEnFalla"
+                [noRetiraEquipo]="noRetiraEquipo"
+                [estadoEquipos]="estadoEquipos"
+
+                (agregarEquipoRetiradoEvent)="capturaEquipoEntregadoEvent2($event)"
+                (eliminarEquipoRetiradoEvent)="eliminarEventEquipoEntregado2($event)"
+
+                (rehacerBotonAgregarEvent)="rehacerBotonAgregar7($event)"
+                (rehacerBotonEliminarEvent)="rehacerBotonEliminar7($event)"
+
+                [rehacerBotonAgregar]="rehacerBotonAgrega8"
+                [rehacerBotonEliminar]="rehacerBotoneEliminado8"
+
+                [rellenarCampo1]="'Seleccionar equipo entregado'"
+                [rellenarCampo2]="'Seleccionar modelo entregado'"
+                [rellenarCampo4]="'Seleccionar estado'"
+                [etiquetaLabel1]="'Equipo 2 entregado por ATP a distrito'"
+                [etiquetaLabel2]="'modelo entregado '"
+                [etiquetaLabel3]="'Nro de serie entregado 2'"
+                [etiquetaLabel4]="'Estado entregado 2'"
+              ></app-equipo-retirado-instalado>
+              </div>
+              <div style="margin-top: 25px" *ngIf="equipoEntregado3">
+              <app-equipo-retirado-instalado
+                [listDatos]="listDatos"
+                [equiposEnFalla]="equiposEnFalla"
+                [noRetiraEquipo]="noRetiraEquipo"
+                [estadoEquipos]="estadoEquipos"
+
+                (eliminarEquipoRetiradoEvent)="eliminarEventEquipoEntregado3($event)"
+
+                (rehacerBotonEliminarEvent)="rehacerBotonEliminar8($event)"
+                (rehacerBotonAgregarEvent)="rehacerBotonAgregar8($event)"
+
+                [rehacerBotonAgregar]="rehacerBotonAgrega9"
+                [rehacerBotonEliminar]="rehacerBotoneEliminado9"
+
+                [rellenarCampo1]="'Seleccionar equipo entregado'"
+                [rellenarCampo2]="'Seleccionar modelo entregado'"
+                [rellenarCampo4]="'Seleccionar estado'"
+                [etiquetaLabel1]="'Equipo 3 entregado por ATP a distrito'"
+                [etiquetaLabel2]="'modelo entregado '"
+                [etiquetaLabel3]="'Nro de serie entregado 3'"
+                [etiquetaLabel4]="'Estado entregado 3'"
+              ></app-equipo-retirado-instalado>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-1">
+      <div class="row justify-content-md-center">
+        <div class="col col-12">
+          <div class="card" style="margin-top: 10px">
+            <div class="card-body" style="margin-top: 8px">
+              <span class="p-float-label">
+                <textarea
+                  [style]="{ minWidth: '100%', 'padding-top': '-5px', maxWidth: '100%', }"
+                  rows="5"
+                  pInputTextarea
+
+                >
+                </textarea>
+                <label>Acción desarrollada por ATP</label>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-1">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-12">
+          <div class="card" style="margin-top: 10px">
+            <div class="card-body" style="margin-top: 8px">
+              <div class="row">
+                <div class="col-lg-3">
+                  <span class="p-float-label">
+                    <p-dropdown
+                      [style]="{ minWidth: '100%', 'padding-top': '-5px', maxWidth: '100%', }"
+                      display="chip"
+                      [options]="HuboGastos"
+                      optionLabel="label"
+
+
+                      placeholder="Generó gastos adicionales"
+                    ></p-dropdown>
+
+                    <label>Generó gastos adicionales</label>
+                  </span>
+                </div>
+                <div class="col-lg-3">
+                  <span class="p-float-label" *ngIf="gastaron">
+                    <p-multiSelect
+                      [style]="{ minWidth: '100%', 'padding-top': '-5px', maxWidth: '100%', }"
+                      [options]="detalleGastos"
+
+                      display="chip"
+                    >
+                      <ng-template let-group pTemplate="group">
+                        <div class="flex align-items-center">
+                          <span>{{ group.label }}</span>
+                        </div>
+                      </ng-template>
+                    </p-multiSelect>
+                    <label>Detalle de gastos</label>
+                  </span>
+                </div>
+                <div class="col-lg-6">
+                  <span class="p-float-label" *ngIf="gastaron">
+                    <div class="card flex justify-content-center">
+                      <p-fileUpload
+                        name="demo[]"
+                        (onUpload)="onUpload($event)"
+                        [multiple]="true"
+                        accept="image/*"
+                        cancelLabel="Cancelar"
+                        uploadLabel="Cargar"
+                        chooseLabel="Seleccionar"
+                      >
+                        <ng-template pTemplate="content">
+                          <ul *ngIf="uploadedFiles.length">
+                            <li *ngFor="let file of uploadedFiles">
+                              {{ file.name }} - {{ file.size }} bytes
+                            </li>
+                          </ul>
+                        </ng-template>
+                      </p-fileUpload>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

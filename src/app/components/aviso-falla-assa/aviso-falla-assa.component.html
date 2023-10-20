@@ -1,0 +1,19 @@
+<span class="p-float-label">
+
+  <p-dropdown
+  [options]="personalDistritos"
+  optionLabel="label"
+  [showClear]="true"
+  [style]="{ minWidth: '100%', 'padding-top': '-5px', maxWidth: '100%', }"
+  [placeholder]="rellenarCampo"
+>
+  <ng-template let-group pTemplate="group">
+    <div class="flex align-items-center">
+      <span>{{ group.label }}</span>
+    </div>
+  </ng-template>
+</p-dropdown>
+
+<label>{{etiquetaLabel}}</label>
+
+</span>
