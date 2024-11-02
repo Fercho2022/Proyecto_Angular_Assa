@@ -1,12 +1,14 @@
+
 <span class="p-float-label">
   <p-dropdown
     [options]="estaciones"
     [group]="true"
     [showClear]="true"
+    [editable]="true"
     [style]="{ minWidth: '100%', 'padding-top': '-5px', maxWidth: '100%', }"
     [placeholder]="rellenarCampo"
 
-
+    (onChange)="onEstacionIntervencionChanged($event)"
   >
     <ng-template let-group pTemplate="group">
       <div class="flex align-items-center">
@@ -17,3 +19,4 @@
 
   <label>{{etiquetaLabel}}</label>
 </span>
+

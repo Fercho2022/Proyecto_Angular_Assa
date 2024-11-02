@@ -1,47 +1,57 @@
+
 <div class="row">
-<div class="col-lg-4">
+<div class="col-lg-4" style="margin-bottom: 25px">
   <app-equipo-falla
     [listDatos]="listDatos"
     [equiposEnFalla]="equiposEnFalla"
     (arraynewItemEvent)="capturaArray1($event)"
     [rellenarCampo]="rellenarCampo1"
     [etiquetaLabel]="etiquetaLabel1"
+    (equiposFallaIntervencionChanged)="updateEquipoFallaIntervencionValue($event)"
+
   ></app-equipo-falla>
 </div>
 
-<div class="col-lg-4">
+<div class="col-lg-4" style="margin-bottom: 25px">
   <app-equipos-especifico-falla
     [etiquetaLabel]="etiquetaLabel2"
     [rellenarCampo]="rellenarCampo2"
     [arrayfallas1]="arrayfallas1"
-  ></app-equipos-especifico-falla>
+
+    (equipoEspecificoFallaIntervencionChanged)="updateEquipoEspecificoFallaIntervencionValue($event)"
+
+    ></app-equipos-especifico-falla>
 </div>
-<div class="col-lg-3">
+<div class="col-lg-3" >
   <app-estado-equipo
     [rellenarCampo]="rellenarCampo3"
     [estadoEquipos]="estadoEquipos"
     [etiquetaLabel]="etiquetaLabel3"
-  ></app-estado-equipo>
+
+    (estadoEquipoIntervencionChanged)="updateEstadoEquipoFallaIntervencionValue($event)"
+
+    ></app-estado-equipo>
 </div>
 <div class="col-lg-1">
 
-      <div class="row mtop2" *ngIf="retiraBotonAgregar">
+      <div class="row" style="margin-top: -7px;"  *ngIf="retiraBotonAgregar">
       <p-button
-        label="Agregar"
-        styleClass="p-button-rounded tamaño1"
+      styleClass="p-button botonEquiposAgregar rounded"
+      label="Agregar"
         (click)="agregarEquipoFalla()"
+
       ></p-button>
     </div>
 
-    <div class="row mtop2" *ngIf="retiraBotonEliminar">
+    <div class="row" style="margin-bottom: 9px;" *ngIf="retiraBotonEliminar">
 
       <p-button
+      styleClass="p-button p-button-danger botonEquiposEliminar rounded"
         label="Eliminar"
-        styleClass="p-button-rounded p-button-danger tamaño1"
         (click)="RetirarEquipoFalla()"
+
       ></p-button>
 
   </div>
 </div>
 </div>
-

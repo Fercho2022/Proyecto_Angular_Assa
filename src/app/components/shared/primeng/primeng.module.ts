@@ -1,22 +1,33 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
-
 import { MenubarModule } from 'primeng/menubar';
-import { CalendarModule } from 'primeng/calendar';
-import { InputTextModule } from 'primeng/inputtext';
-import { CascadeSelectModule } from 'primeng/cascadeselect';
 import { DropdownModule } from 'primeng/dropdown';
-import { ScrollerModule } from 'primeng/scroller';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 import { MultiSelectModule } from 'primeng/multiselect';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CalendarModule } from 'primeng/calendar';
 import { FileUploadModule } from 'primeng/fileupload';
 
-
-
-import { ButtonModule } from 'primeng/button';
+import { MessagesModule } from 'primeng/messages';
 import { ToastModule } from 'primeng/toast';
+import { TableModule } from 'primeng/table';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -30,16 +41,27 @@ import { ToastModule } from 'primeng/toast';
   imports: [
     CommonModule,
     MenubarModule,
-    CalendarModule,
-    InputTextModule,
-    CascadeSelectModule,
     DropdownModule,
-    ScrollerModule,
-    MultiSelectModule,
-    InputTextareaModule,
-    FileUploadModule,
+    InputTextModule,
     ButtonModule,
-    ToastModule
+    MultiSelectModule,
+    CalendarModule,
+    FileUploadModule,
+    MessagesModule,
+    ToastModule,
+    TableModule
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -49,16 +71,17 @@ import { ToastModule } from 'primeng/toast';
 
     CommonModule,
     MenubarModule,
-    CalendarModule,
-    InputTextModule,
-    CascadeSelectModule,
     DropdownModule,
-    ScrollerModule,
-    MultiSelectModule,
-    InputTextareaModule,
-    FileUploadModule,
+    InputTextModule,
     ButtonModule,
-    ToastModule
+    MultiSelectModule,
+    CalendarModule,
+    FileUploadModule,
+    MessagesModule,
+    ToastModule,
+    TableModule
+
+
 
   ],
 })

@@ -7,9 +7,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RecuperarPasswordComponent } from './components/recuperar-password/recuperar-password.component';
 import { IntervencionComponent } from './components/intervencion/intervencion.component';
 import { AgregarCampoComponent } from './components/agregar-campo/agregar-campo.component';
+import { AgregarComponent } from './components/agregar/agregar.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch:'full'},
+ {path: '', redirectTo: 'login', pathMatch:'full'},
   {path: 'login', component:LoginComponent},
   {path: 'registrar-usuario', component:RegistrarUsuarioComponent},
   {path: 'verificar-correo', component:VerificarCorreoComponent},
@@ -17,7 +18,7 @@ const routes: Routes = [
   {path: 'dashboard', component:DashboardComponent,  children: [
       { path: 'intervencion', component:IntervencionComponent}, ]},
   {path: 'dashboard', component:DashboardComponent,  children: [
-      { path: 'agregar-campo', component:AgregarCampoComponent },]},
+      { path: 'agregar-campo', component:AgregarCampoComponent  },]},
 
 
 

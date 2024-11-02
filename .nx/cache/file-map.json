@@ -1,0 +1,1049 @@
+{
+  "version": "6.0",
+  "nxVersion": "16.10.0",
+  "deps": {
+    "@angular/animations": "^16.2.3",
+    "@angular/cdk": "^16.2.12",
+    "@angular/common": "^16.0.0",
+    "@angular/compiler": "^16.0.0",
+    "@angular/core": "^16.0.0",
+    "@angular/fire": "^7.6.1",
+    "@angular/forms": "^16.0.0",
+    "@angular/material": "^16.2.12",
+    "@angular/platform-browser": "^16.0.0",
+    "@angular/platform-browser-dynamic": "^16.0.0",
+    "@angular/router": "^16.0.0",
+    "@types/google.maps": "^3.55.1",
+    "bootstrap": "^5.3.2",
+    "firebase": "^9.23.0",
+    "ngx-toastr": "^17.0.2",
+    "nodemon": "^3.0.1",
+    "primeflex": "^3.3.1",
+    "primeicons": "^6.0.1",
+    "primeng": "^16.7.2",
+    "rxfire": "^6.0.3",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.13.0",
+    "@angular-devkit/build-angular": "^16.0.1",
+    "@angular-devkit/core": "~16.0.1",
+    "@angular-devkit/schematics": "~16.0.1",
+    "@angular/cli": "^16.2.1",
+    "@angular/compiler-cli": "^16.0.0",
+    "@nx/angular": "^16.8.0",
+    "@nx/workspace": "^16.8.0",
+    "@schematics/angular": "~16.0.1",
+    "@types/jasmine": "~4.3.0",
+    "jasmine-core": "~4.6.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.0.0",
+    "nx": "^16.8.0",
+    "nx-cloud": "^16.0.4",
+    "typescript": "~5.0.2"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "ABMEmpleados": [
+        {
+          "file": ".editorconfig",
+          "hash": "6686520031028425313"
+        },
+        {
+          "file": ".gitignore",
+          "hash": "13044518069027839699"
+        },
+        {
+          "file": ".nx/cache/file-map.json",
+          "hash": "3085471028840944701"
+        },
+        {
+          "file": ".nx/cache/lockfile.hash",
+          "hash": "4277246638923711326"
+        },
+        {
+          "file": ".nx/cache/nx-console-project-graph/project-graph.html",
+          "hash": "17036869540637447991"
+        },
+        {
+          "file": ".nx/cache/nx-console-project-graph/static/3rdpartylicenses.txt",
+          "hash": "5667550289807473445"
+        },
+        {
+          "file": ".nx/cache/nx-console-project-graph/static/environment.js",
+          "hash": "6490269270931031709"
+        },
+        {
+          "file": ".nx/cache/nx-console-project-graph/static/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": ".nx/cache/nx-console-project-graph/static/main.js",
+          "hash": "13551439496520482047",
+          "deps": [
+            [
+              "npm:util",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": ".nx/cache/nx-console-project-graph/static/polyfills.js",
+          "hash": "5617236864114375205"
+        },
+        {
+          "file": ".nx/cache/nx-console-project-graph/static/runtime.js",
+          "hash": "9652903316845995179"
+        },
+        {
+          "file": ".nx/cache/nx-console-project-graph/static/styles.css",
+          "hash": "2125456314194136822"
+        },
+        {
+          "file": ".nx/cache/nx-console-project-graph/static/styles.js",
+          "hash": "13596360365094399219"
+        },
+        {
+          "file": ".nx/cache/parsed-lock-file.json",
+          "hash": "15006075009768734636"
+        },
+        {
+          "file": ".nx/cache/project-graph.json",
+          "hash": "7451735950717459396"
+        },
+        {
+          "file": ".vscode/extensions.json",
+          "hash": "12343942279124280405"
+        },
+        {
+          "file": ".vscode/launch.json",
+          "hash": "17038929134016848735"
+        },
+        {
+          "file": ".vscode/settings.json",
+          "hash": "16432215551666450884"
+        },
+        {
+          "file": ".vscode/tasks.json",
+          "hash": "5336636969995539451"
+        },
+        {
+          "file": "README.md",
+          "hash": "8922059669911977664"
+        },
+        {
+          "file": "angular.json",
+          "hash": "16551629246561366981"
+        },
+        {
+          "file": "package-lock.json",
+          "hash": "18414646030871518494"
+        },
+        {
+          "file": "package.json",
+          "hash": "10575590409032664436",
+          "deps": [
+            "npm:@angular/animations",
+            "npm:@angular/cdk",
+            "npm:@angular/common",
+            "npm:@angular/compiler",
+            "npm:@angular/core",
+            "npm:@angular/fire",
+            "npm:@angular/forms",
+            "npm:@angular/material",
+            "npm:@angular/platform-browser",
+            "npm:@angular/platform-browser-dynamic",
+            "npm:@angular/router",
+            "npm:@types/google.maps",
+            "npm:bootstrap",
+            "npm:firebase",
+            "npm:ngx-toastr",
+            "npm:nodemon",
+            "npm:primeflex",
+            "npm:primeicons",
+            "npm:primeng",
+            "npm:rxfire",
+            "npm:rxjs",
+            "npm:tslib",
+            "npm:zone.js",
+            "npm:@angular-devkit/build-angular",
+            "npm:@angular-devkit/core",
+            "npm:@angular-devkit/schematics",
+            "npm:@angular/cli",
+            "npm:@angular/compiler-cli",
+            "npm:@nx/angular",
+            "npm:@nx/workspace",
+            "npm:@schematics/angular",
+            "npm:@types/jasmine",
+            "npm:jasmine-core",
+            "npm:karma",
+            "npm:karma-chrome-launcher",
+            "npm:karma-coverage",
+            "npm:karma-jasmine",
+            "npm:karma-jasmine-html-reporter",
+            "npm:nx",
+            "npm:nx-cloud",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "project.json",
+          "hash": "17696689202920243363"
+        },
+        {
+          "file": "src/app/app-routing.module.ts",
+          "hash": "5713349543265945198",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "src/app/app.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/app.component.html",
+          "hash": "989750518109385517"
+        },
+        {
+          "file": "src/app/app.component.spec.ts",
+          "hash": "9898081647758425674",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "src/app/app.component.ts",
+          "hash": "4971534245508512382",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/app.module.ts",
+          "hash": "6925621579991036432",
+          "deps": [
+            "npm:@angular/platform-browser",
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/fire"
+          ]
+        },
+        {
+          "file": "src/app/components/agregar/agregar.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/agregar/agregar.component.html",
+          "hash": "12005429725058619807"
+        },
+        {
+          "file": "src/app/components/agregar/agregar.component.spec.ts",
+          "hash": "11665499960117194953",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/agregar/agregar.component.ts",
+          "hash": "4100105674047445241",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "src/app/components/agregar-campo/agregar-campo.component.css",
+          "hash": "15036214574332298676"
+        },
+        {
+          "file": "src/app/components/agregar-campo/agregar-campo.component.html",
+          "hash": "5928398692474459736"
+        },
+        {
+          "file": "src/app/components/agregar-campo/agregar-campo.component.spec.ts",
+          "hash": "2444606541503154759",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/agregar-campo/agregar-campo.component.ts",
+          "hash": "1697142394871235865",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "src/app/components/agregar-equipos-fallan/agregar-equipos-fallan.component.css",
+          "hash": "10897242300219236185"
+        },
+        {
+          "file": "src/app/components/agregar-equipos-fallan/agregar-equipos-fallan.component.html",
+          "hash": "2681066831259012775"
+        },
+        {
+          "file": "src/app/components/agregar-equipos-fallan/agregar-equipos-fallan.component.spec.ts",
+          "hash": "6326009854398578744",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/agregar-equipos-fallan/agregar-equipos-fallan.component.ts",
+          "hash": "17226493027614150812",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/agregar-estacion/agregar-estacion.component.css",
+          "hash": "10745783108890485976"
+        },
+        {
+          "file": "src/app/components/agregar-estacion/agregar-estacion.component.html",
+          "hash": "7757951638476238871"
+        },
+        {
+          "file": "src/app/components/agregar-estacion/agregar-estacion.component.spec.ts",
+          "hash": "9779106587016757867",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/agregar-estacion/agregar-estacion.component.ts",
+          "hash": "2798860352596877388",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "src/app/components/aviso-falla-assa/aviso-falla-assa.component.css",
+          "hash": "3413769076903522666"
+        },
+        {
+          "file": "src/app/components/aviso-falla-assa/aviso-falla-assa.component.html",
+          "hash": "4787905147763326864"
+        },
+        {
+          "file": "src/app/components/aviso-falla-assa/aviso-falla-assa.component.spec.ts",
+          "hash": "8653267041785011990",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/aviso-falla-assa/aviso-falla-assa.component.ts",
+          "hash": "6745776891394255767",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/campos-multiples/campos-multiples.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/campos-multiples/campos-multiples.component.html",
+          "hash": "690319488442539564"
+        },
+        {
+          "file": "src/app/components/campos-multiples/campos-multiples.component.spec.ts",
+          "hash": "9925666053171437335",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/campos-multiples/campos-multiples.component.ts",
+          "hash": "8602797087888200854",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/dashboard/dashboard.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/dashboard/dashboard.component.html",
+          "hash": "5691737541872029327"
+        },
+        {
+          "file": "src/app/components/dashboard/dashboard.component.spec.ts",
+          "hash": "13268531653547974577",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/dashboard/dashboard.component.ts",
+          "hash": "2103838569566588013",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/distrito-falla/distrito-falla.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/distrito-falla/distrito-falla.component.html",
+          "hash": "17765084495317036000"
+        },
+        {
+          "file": "src/app/components/distrito-falla/distrito-falla.component.spec.ts",
+          "hash": "5585849486192529059",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/distrito-falla/distrito-falla.component.ts",
+          "hash": "894780247272551308",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/equipo-falla/equipo-falla.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/equipo-falla/equipo-falla.component.html",
+          "hash": "6615897317784447346"
+        },
+        {
+          "file": "src/app/components/equipo-falla/equipo-falla.component.spec.ts",
+          "hash": "10870809350795140666",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/equipo-falla/equipo-falla.component.ts",
+          "hash": "5623532009859868687",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/equipo-retirado-instalado/equipo-retirado-instalado.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/equipo-retirado-instalado/equipo-retirado-instalado.component.html",
+          "hash": "611947781040964267"
+        },
+        {
+          "file": "src/app/components/equipo-retirado-instalado/equipo-retirado-instalado.component.spec.ts",
+          "hash": "17104022680376664007",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/equipo-retirado-instalado/equipo-retirado-instalado.component.ts",
+          "hash": "2606826118786695265",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/equipos-especifico-falla/equipos-especifico-falla.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/equipos-especifico-falla/equipos-especifico-falla.component.html",
+          "hash": "18247048490287748365"
+        },
+        {
+          "file": "src/app/components/equipos-especifico-falla/equipos-especifico-falla.component.spec.ts",
+          "hash": "1406824802595811690",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/equipos-especifico-falla/equipos-especifico-falla.component.ts",
+          "hash": "11142467929977755770",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/estacion-falla/estacion-falla.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/estacion-falla/estacion-falla.component.html",
+          "hash": "16482316088638118692"
+        },
+        {
+          "file": "src/app/components/estacion-falla/estacion-falla.component.spec.ts",
+          "hash": "3993639690889065019",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/estacion-falla/estacion-falla.component.ts",
+          "hash": "2094662938684582826",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/estado-equipo/estado-equipo.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/estado-equipo/estado-equipo.component.html",
+          "hash": "11612020288481281931"
+        },
+        {
+          "file": "src/app/components/estado-equipo/estado-equipo.component.spec.ts",
+          "hash": "10360249453404752264",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/estado-equipo/estado-equipo.component.ts",
+          "hash": "8641556423077228208",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/fecha-aviso/fecha-aviso.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/fecha-aviso/fecha-aviso.component.html",
+          "hash": "7776537267467850354"
+        },
+        {
+          "file": "src/app/components/fecha-aviso/fecha-aviso.component.spec.ts",
+          "hash": "3878362724566594669",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/fecha-aviso/fecha-aviso.component.ts",
+          "hash": "13196773335755165586",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "src/app/components/fecha-fin-intervencion/fecha-fin-intervencion.component.css",
+          "hash": "15036214574332298676"
+        },
+        {
+          "file": "src/app/components/fecha-fin-intervencion/fecha-fin-intervencion.component.html",
+          "hash": "10431688561885978552"
+        },
+        {
+          "file": "src/app/components/fecha-fin-intervencion/fecha-fin-intervencion.component.spec.ts",
+          "hash": "17396558180049648631",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/fecha-fin-intervencion/fecha-fin-intervencion.component.ts",
+          "hash": "3171569661574891267",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/imput-serie/imput-serie.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/imput-serie/imput-serie.component.html",
+          "hash": "7141458654744844120"
+        },
+        {
+          "file": "src/app/components/imput-serie/imput-serie.component.spec.ts",
+          "hash": "4074705968880523780",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/imput-serie/imput-serie.component.ts",
+          "hash": "3942683507338251552",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/intervencion/intervencion.component.css",
+          "hash": "1658837348251982248"
+        },
+        {
+          "file": "src/app/components/intervencion/intervencion.component.html",
+          "hash": "3586759041917226745"
+        },
+        {
+          "file": "src/app/components/intervencion/intervencion.component.spec.ts",
+          "hash": "5228423683681344844",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/intervencion/intervencion.component.ts",
+          "hash": "2499381217416558721",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:primeng",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "src/app/components/listar/listar.component.css",
+          "hash": "4621490477603152411"
+        },
+        {
+          "file": "src/app/components/listar/listar.component.html",
+          "hash": "4262997878419803567"
+        },
+        {
+          "file": "src/app/components/listar/listar.component.spec.ts",
+          "hash": "1127947299420200538",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/listar/listar.component.ts",
+          "hash": "16424109925802478397",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/login/login.component.css",
+          "hash": "15036214574332298676"
+        },
+        {
+          "file": "src/app/components/login/login.component.html",
+          "hash": "13365330773406246136"
+        },
+        {
+          "file": "src/app/components/login/login.component.spec.ts",
+          "hash": "15222502735042189921",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/login/login.component.ts",
+          "hash": "1384052344589944834",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "src/app/components/navbar/navbar.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/navbar/navbar.component.html",
+          "hash": "2007387895700792483"
+        },
+        {
+          "file": "src/app/components/navbar/navbar.component.spec.ts",
+          "hash": "4989300925962487947",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/navbar/navbar.component.ts",
+          "hash": "6880141630663807136",
+          "deps": [
+            "npm:@angular/core",
+            "npm:primeng"
+          ]
+        },
+        {
+          "file": "src/app/components/nro-intervencion/nro-intervencion.component.css",
+          "hash": "8910141046895264465"
+        },
+        {
+          "file": "src/app/components/nro-intervencion/nro-intervencion.component.html",
+          "hash": "14644370535881282656"
+        },
+        {
+          "file": "src/app/components/nro-intervencion/nro-intervencion.component.spec.ts",
+          "hash": "11791189079528982543",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/nro-intervencion/nro-intervencion.component.ts",
+          "hash": "18431171764948981366",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/personal-atp-asistio/personal-atp-asistio.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/personal-atp-asistio/personal-atp-asistio.component.html",
+          "hash": "4879702174944570161"
+        },
+        {
+          "file": "src/app/components/personal-atp-asistio/personal-atp-asistio.component.spec.ts",
+          "hash": "763090443713419526",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/personal-atp-asistio/personal-atp-asistio.component.ts",
+          "hash": "14376309128437962704",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/recepcion-aviso-atp/recepcion-aviso-atp.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/recepcion-aviso-atp/recepcion-aviso-atp.component.html",
+          "hash": "11048908160218945737"
+        },
+        {
+          "file": "src/app/components/recepcion-aviso-atp/recepcion-aviso-atp.component.spec.ts",
+          "hash": "11329497208903331732",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/recepcion-aviso-atp/recepcion-aviso-atp.component.ts",
+          "hash": "2610270765818707260",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/recuperar-password/recuperar-password.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/recuperar-password/recuperar-password.component.html",
+          "hash": "14708558723881643883"
+        },
+        {
+          "file": "src/app/components/recuperar-password/recuperar-password.component.spec.ts",
+          "hash": "16164253776253248234",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/recuperar-password/recuperar-password.component.ts",
+          "hash": "17976830923516613876",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/registrar-usuario/registrar-usuario.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/registrar-usuario/registrar-usuario.component.html",
+          "hash": "9765290278798061395"
+        },
+        {
+          "file": "src/app/components/registrar-usuario/registrar-usuario.component.spec.ts",
+          "hash": "13041764059962241029",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/registrar-usuario/registrar-usuario.component.ts",
+          "hash": "16409641873176091044",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/router",
+            "npm:primeng"
+          ]
+        },
+        {
+          "file": "src/app/components/shared/mensajes/mensajes/mensajes.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/shared/mensajes/mensajes/mensajes.component.html",
+          "hash": "17410798019096363869"
+        },
+        {
+          "file": "src/app/components/shared/mensajes/mensajes/mensajes.component.spec.ts",
+          "hash": "13454595946498804244",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/shared/mensajes/mensajes/mensajes.component.ts",
+          "hash": "8290026835424827889",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/shared/primeng/primeng.module.ts",
+          "hash": "3674491595717126867",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:primeng"
+          ]
+        },
+        {
+          "file": "src/app/components/shared/spinner/spinner.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/shared/spinner/spinner.component.html",
+          "hash": "12988079102215723284"
+        },
+        {
+          "file": "src/app/components/shared/spinner/spinner.component.spec.ts",
+          "hash": "15685030951241646054",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/shared/spinner/spinner.component.ts",
+          "hash": "7837154748884194161",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/verificar-correo/verificar-correo.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/verificar-correo/verificar-correo.component.html",
+          "hash": "17388127103187981145"
+        },
+        {
+          "file": "src/app/components/verificar-correo/verificar-correo.component.spec.ts",
+          "hash": "9997524979964349001",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/components/verificar-correo/verificar-correo.component.ts",
+          "hash": "13335449642142070096",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/maps/components/loading/loading.component.css",
+          "hash": "1835986842017072208"
+        },
+        {
+          "file": "src/app/maps/components/loading/loading.component.html",
+          "hash": "6746579211992979225"
+        },
+        {
+          "file": "src/app/maps/components/loading/loading.component.ts",
+          "hash": "17621507360541033278",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/maps/components/map-view/map-view.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/maps/components/map-view/map-view.component.html",
+          "hash": "9592250105924738188"
+        },
+        {
+          "file": "src/app/maps/components/map-view/map-view.component.ts",
+          "hash": "3601506841114821569",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/maps/maps.module.ts",
+          "hash": "5708749866825982932",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/maps/screens/map-screen/map-screen.component.css",
+          "hash": "15036214574332298676"
+        },
+        {
+          "file": "src/app/maps/screens/map-screen/map-screen.component.html",
+          "hash": "10240475512714182889"
+        },
+        {
+          "file": "src/app/maps/screens/map-screen/map-screen.component.ts",
+          "hash": "5884510984319865878",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/maps/services/index.ts",
+          "hash": "11405921693948649733"
+        },
+        {
+          "file": "src/app/maps/services/places.service.ts",
+          "hash": "4339150027529805032",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/models/Datos.ts",
+          "hash": "16222517085322955800"
+        },
+        {
+          "file": "src/app/models/Equipo.ts",
+          "hash": "8362515318036687024"
+        },
+        {
+          "file": "src/app/models/Intervencion.ts",
+          "hash": "6060654997856488144"
+        },
+        {
+          "file": "src/app/services/comunicacion.service.ts",
+          "hash": "13445498889957322120",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "src/app/services/firebase.service.ts",
+          "hash": "9579762225389879089",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/fire",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/assets/img/destination_custom_pin.svg",
+          "hash": "574668961612514808"
+        },
+        {
+          "file": "src/assets/img/login.png",
+          "hash": "12637322740029886820"
+        },
+        {
+          "file": "src/assets/img/oval.svg",
+          "hash": "1389772635568345193"
+        },
+        {
+          "file": "src/assets/img/three-dots.svg",
+          "hash": "13173699739135279016"
+        },
+        {
+          "file": "src/assets/img/truck_loader.svg",
+          "hash": "4016438217237956029"
+        },
+        {
+          "file": "src/assets/img/truck_pin.svg",
+          "hash": "1901095324841735162"
+        },
+        {
+          "file": "src/assets/img/youps_loader.svg",
+          "hash": "14813476259688798096"
+        },
+        {
+          "file": "src/assets/img/youpslogo.svg",
+          "hash": "17390931591818141925"
+        },
+        {
+          "file": "src/environments/environment.development.ts",
+          "hash": "12639564490698718500"
+        },
+        {
+          "file": "src/environments/environment.ts",
+          "hash": "17184479475790259868"
+        },
+        {
+          "file": "src/favicon.ico",
+          "hash": "3464744996580215640"
+        },
+        {
+          "file": "src/index.html",
+          "hash": "1203412868614209473"
+        },
+        {
+          "file": "src/main.ts",
+          "hash": "14700736444745243756",
+          "deps": [
+            "npm:@angular/platform-browser-dynamic",
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/styles.css",
+          "hash": "5427401057137170745"
+        },
+        {
+          "file": "tsconfig.app.json",
+          "hash": "17337579397915052279"
+        },
+        {
+          "file": "tsconfig.json",
+          "hash": "1047940026627514556"
+        },
+        {
+          "file": "tsconfig.spec.json",
+          "hash": "15575553540147145788"
+        }
+      ]
+    },
+    "nonProjectFiles": []
+  }
+}

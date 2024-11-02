@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-estado-equipo',
@@ -12,4 +13,19 @@ export class EstadoEquipoComponent {
   @Input() estadoEquipos!:any[];
   @Input() etiquetaLabel!:string;
   @Input() rellenarCampo!:string;
+  @Input() limpiarDropdown!:boolean;
+
+
+
+  @Output() estadoEquipoIntervencionChanged = new EventEmitter();
+
+
+
+
+
+onEstadoEquipoIntervencionChanged(event:any) {
+
+  this.estadoEquipoIntervencionChanged.emit(event.value);
+}
+
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Intervencion } from 'src/app/models/Intervencion';
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -8,6 +8,7 @@ import { FileUploadEvent } from 'primeng/fileupload';
 import { Datos } from 'src/app/models/Datos';
 import { ComunicacionService } from 'src/app/services/comunicacion.service';
 import { Event, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 interface UploadEvent {
   originalEvent: Event;
@@ -18,26 +19,56 @@ interface UploadEvent {
   selector: 'app-intervencion',
   templateUrl: './intervencion.component.html',
   styleUrls: ['./intervencion.component.css'],
-  providers: [],
+  providers: [MessageService],
 })
 export class IntervencionComponent {
-  distritos!: any[];
-  equiposEspecificosFalla!: any[];
-  grupoFallas!: any[];
-  estaciones: any[] = [];
-  intervencionForm!: FormGroup;
-  PersonalATP!: any[];
-  personalDistritos!: any[];
-  equiposRetiradosOInstalados!: any[];
+
+
+estaciones:any[]=[]
+  estacionesRosarioPlanta: any[] = [];
+  estacionesRosarioVinculadasAgua: any[] = [];
+  estacionesRosarioVinculadasCloacales: any[] = [];
+  estacionesBermudez: any[] = [];
+  estacionesCasilda: any[] = [];
+  estacionesFirmat: any[] = [];
+  estacionesCañada: any[] = [];
+  estacionesFunes: any[] = [];
+  estacionesBaigorria: any[] = [];
+  estacionesAcoPlanta: any[] = [];
+  estacionesAco: any[] = [];
+  estacionesRufino: any[] = [];
+  estacionesSanLorenzo: any[] = [];
+  estacionesGalvez: any[] = [];
+  estadoEquipos: any[]= []
+  HuboGastos: any[]= [];
+  PersonalATP: any[]= [];
+  detalleGastos: any[]= [];
+  equiposRetiradosOInstalados: any[]= [];
+  distritos: any[]= [];
+
+  equiposEspecificosProcesadores: any[]= [];
+  equiposEspecificosModulosM340: any[]= [];
+  equiposEspecificosModulosM221: any[]= [];
+  equiposEspecificosModulosTwido: any[]= [];
+  equiposEspecificosModulosPremium: any[]= [];
+  equiposEspecificosModulosMicro: any[]= [];
+  equiposEspecificosComandoBomba: any[]= [];
+  equiposEspecificosVariadores: any[]= [];
+  equiposEspecificosRadios: any[]= [];
+  equiposEspecificosArrancadores: any[]= [];
+  equiposEnFalla: any[]= [];
+
+  personalDistritos: any[]= [];
+  intervencionForm: FormGroup;
   uploadedFiles: any[] = [];
-  HuboGastos!: any[];
-  detalleGastos!: any[];
-  equiposEnFalla!: any[];
+
+  grupoFallas: any[]= [];
+
   gastaron: boolean = true;
   noRetiraEquipo: boolean = true;
   noInstalaEquipo: boolean = true;
   noEntregaEquipo: boolean = true;
-  estadoEquipos!: any[];
+
   arrayfallas1: any[] = [];
   arrayfallas2: any[] = [];
   arrayfallas3: any[] = [];
@@ -92,49 +123,151 @@ export class IntervencionComponent {
   rehacerBotoneEliminado9!: boolean;
   equipoEntregado3!: boolean;
   SelecNroIntervencion!: Date;
+  personalGuardiaCasilda: any[]=[];
+  JefePlantaCasilda:any[]=[];
+  JefeDistritoCasilda: any[]=[];
+  personalGuardiaCañada: any[]=[];
+  JefePlantaCañada: any[]=[];
+  JefeDistritoCañada: any[]=[];
+  personalGuardiaFirmat: any[]=[];
+  JefePlantaFirmat: any[]=[];
+  JefeDistritoFirmat: any[]=[];
+  JefePlantaRufino: any[]=[];
+  JefeDistritoRufino: any[]=[];
+  personalGuardiaSanLorenzo: any[]=[];
+  JefePlantaSanLorenzo: any[]=[];
+  JefeDistritoSanLorenzo: any[]=[];
+  JefePlantaAco: any[]=[];
+  JefeTransporteAco: any[]=[];
+  JefeDistritoAco: any[]=[];
+  JefeProduccionAco: any[]=[];
+  personalGuardiaFunes:any[]=[];
+  JefePlantaFunes:any[]=[];
+  JefeDistritoFunes: any[]=[];
+  personalGuardiaRosario: any[]=[];
+  JefePlantaRosario: any[]=[];
+  JefeDistritoRosario: any[]=[];
+  personalGuardiaGalvez: any[]=[];
+  JefePlantaGalvez: any[]=[];
+  personalGuardiaRufino: any[]=[];
+  personalGuardiaAco: any[]=[];
+  JefeDistritoGalvez: any[]=[];
+  CcrRosario: any[]=[];
+  JefeTurnoRosario: any[]=[];
+  personalGuardiaBermudez:any[]=[];
+  JefePlantaBermudez: any[]=[];
+  JefeDistritoBermudez: any[]=[];
+
+  equiposEspecificosTransmisoresNivel: any[]=[];
+  equiposEspecificosTransmisoresPresion: any[]=[];
+  equiposEspecificosTransmisoresCaudal: any[]=[];
+  equiposEspecificosTransmisoresCloro:any[]=[];
+  equiposEspecificosTransmisoresTemperatura: any[]=[];
+  equiposEspecificosTransmisoresPh: any[]=[];
+  equiposEspecificosTransmisoresMovimiento: any[]=[];
+  equiposEspecificosSensoresCaudal: any[]=[];
+  equiposEspecificosSensoresConductividad: any[]=[];
+  equiposEspecificosSensoresPh: any[]=[];
+  equiposEspecificosSensoresCloro:any[]=[];
+  equiposEspecificosSensoresTemperatura: any[]=[];
+  equiposEspecificosSensoresMovimiento: any[]=[];
+  equiposEspecificosDisplay: any[]=[];
+  equiposEspecificosFuentes12V: any[]=[];
+  equiposEspecificosFuentes24V:any[]=[];
+  equiposEspecificosBoyas: any[]=[];
+  equiposEspecificosSwitchEthernet: any[]=[];
+  equiposEspecificosSwitchCaudal: any[]=[];
+  equiposEspecificosSwitchPresion: any[]=[];
+  equiposEspecificosMonitores: any[]=[];
+  equiposEspecificosOtrosEquipos: any[]=[];
+
+
+
 
 
   constructor(
     private fb: FormBuilder,
     private _FirebaseService: FirebaseService,
     private _comunicacionService: ComunicacionService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {
+
+
     this.intervencionForm = this.fb.group({
-      nroIntervencion: [null, Validators.required],
-      fechaAvisoIntervencion: [null, Validators.required],
-      fechaFinIntervencion: [null, Validators.required],
+      nroIntervencion: ['', Validators.required],
+      fechaAvisoIntervencion: ['', Validators.required],
+      fechaFinIntervencion: ['', Validators.required],
+      equipo1FallaIntervencion: ['', Validators.required],
+      especificidadEquipo1FallaIntervencion: ['', Validators.required],
+      estadoEquipo1FallaIntervencion: ['', Validators.required],
+      distritoIntervencion: ['', Validators.required],
+      estacionIntervencion: ['', Validators.required],
     });
   }
   // Método para actualizar el FormControl "nroIntervencion" cuando cambie en "app-nro-intervencion"
   updateNroIntervencionValue(value: any) {
-    this.intervencionForm.get('nroIntervencion')?.setValue(value.nroIntervencion);
+    console.log(value);
+    this.intervencionForm.get('nroIntervencion')?.setValue(value);
   }
 
   // Método para actualizar el FormControl "fechaAviso" cuando cambie en "app-fecha-aviso"
   updateFechaAvisoValue(value: any) {
-    this.intervencionForm.get('fechaAvisoIntervencion')?.setValue(value.fechaAvisoIntervencion);
+    console.log(value);
+    this.intervencionForm.get('fechaAvisoIntervencion')?.setValue(value);
   }
 
   updateFechaFinValue(value: any) {
-    this.intervencionForm.get('fechaFinIntervencion')?.setValue(value.fechaFinIntervencion);
+    console.log(value);
+    this.intervencionForm.get('fechaFinIntervencion')?.setValue(value);
+  }
+
+  updateDistritoIntervencionValue(value: any) {
+    console.log(value);
+    this.intervencionForm.get('distritoIntervencion')?.setValue(value);
+  }
+
+  updateEstacionIntervencionValue(event: any) {
+    console.log(event.value.label);
+    this.intervencionForm
+      .get('estacionIntervencion')
+      ?.setValue(event.value.label);
+  }
+
+  updateEquiposFallaValue(value: any) {
+    console.log(value.label);
+    this.intervencionForm
+      .get('equipo1FallaIntervencion')
+      ?.setValue(value.label);
+  }
+  updateEquipoEspecificoFallaValue(value: any) {
+    console.log(value.label);
+    this.intervencionForm
+      .get('especificidadEquipo1FallaIntervencion')
+      ?.setValue(value.label);
+  }
+  updateEquipoEstadoFallaValue(value: any) {
+    console.log(value.label);
+    this.intervencionForm
+      .get('estadoEquipo1FallaIntervencion')
+      ?.setValue(value.label);
   }
 
   onUpload(event: FileUploadEvent) {
     for (let file of event.files) {
       this.uploadedFiles.push(file);
     }
+    this.messageService.add({severity: 'info', summary: 'Archivo cargado', detail: 'El archivo se almacenó correctamente'});
   }
 
   agregarIntervencion() {
     const INTERVENCION: Intervencion = {
       nroIntervencion: this.intervencionForm.value.nroIntervencion,
-      fechaAvisoIntervencion: this.intervencionForm.value.fechaAvisoIntervencion,
+      fechaAvisoIntervencion:
+        this.intervencionForm.value.fechaAvisoIntervencion,
       fechaFinIntervencion: this.intervencionForm.value.fechaFinIntervencion,
-
-
     };
-console.log(INTERVENCION);
+    console.log(INTERVENCION);
     this._FirebaseService.AgregarIntervencion(INTERVENCION).then(
       (data) => {
         console.log(data);
@@ -145,23 +278,120 @@ console.log(INTERVENCION);
     );
   }
 
+
+
   ngOnInit() {
+
+
+
+
+
+
+
+    this.gastaron=false;
     ////
     this.ObtenerDatos();
+
+
   }
+
+
 
   AgregarDatosFirebase() {
     const DATOS: Datos = {
-      estaciones: this.estaciones,
-      estadoEquipos: this.estadoEquipos,
-      HuboGastos: this.HuboGastos,
-      PersonalATP: this.PersonalATP,
-      detalleGastos: this.detalleGastos,
-      equiposRetiradosOInstalados: this.equiposRetiradosOInstalados,
-      distritos: this.distritos,
-      equiposEspecificosFalla: this.equiposEspecificosFalla,
-      equiposEnFalla: this.equiposEnFalla,
-      personalDistritos: this.personalDistritos,
+
+  estacionesRosarioPlanta: this.estacionesRosarioPlanta,
+  estacionesRosarioVinculadasAgua: this.estacionesRosarioVinculadasAgua,
+  estacionesRosarioVinculadasCloacales: this. estacionesRosarioVinculadasCloacales,
+  estacionesBermudez: this.estacionesBermudez,
+  estacionesCasilda: this.estacionesCasilda,
+  estacionesFirmat: this.estacionesFirmat,
+  estacionesCañada: this.estacionesCañada,
+  estacionesFunes: this.estacionesFunes,
+  estacionesBaigorria: this.estacionesBaigorria,
+  estacionesAcoPlanta: this.estacionesAcoPlanta,
+  estacionesAco: this.estacionesAco,
+  estacionesRufino: this.estacionesRufino,
+  estacionesSanLorenzo: this.estacionesSanLorenzo,
+  estacionesGalvez: this.estacionesGalvez,
+  estadoEquipos: this.estadoEquipos,
+  HuboGastos: this.HuboGastos,
+  PersonalATP: this.PersonalATP,
+  detalleGastos: this.detalleGastos,
+  equiposRetiradosOInstalados: this.equiposRetiradosOInstalados,
+  distritos: this.distritos,
+
+  equiposEspecificosProcesadores: this.equiposEspecificosProcesadores,
+  equiposEspecificosModulosM340: this.equiposEspecificosModulosM340,
+  equiposEspecificosModulosM221:this.equiposEspecificosModulosM221,
+  equiposEspecificosModulosTwido:this. equiposEspecificosModulosTwido,
+  equiposEspecificosModulosPremium: this.equiposEspecificosModulosPremium,
+  equiposEspecificosModulosMicro: this.equiposEspecificosModulosMicro,
+  equiposEspecificosComandoBomba: this.equiposEspecificosComandoBomba,
+  equiposEspecificosVariadores: this.equiposEspecificosVariadores,
+  equiposEspecificosRadios: this.equiposEspecificosRadios,
+  equiposEspecificosArrancadores:this.equiposEspecificosArrancadores,
+  equiposEnFalla: this.equiposEnFalla,
+  personalGuardiaCasilda:this.personalGuardiaCasilda,
+  JefePlantaCasilda:this.JefePlantaCasilda,
+ JefeDistritoCasilda: this.JefeDistritoCasilda,
+  personalGuardiaCañada:this.personalGuardiaCañada,
+  JefePlantaCañada:this.JefePlantaCañada,
+ JefeDistritoCañada: this.JefeDistritoCañada,
+  personalGuardiaFirmat:this.personalGuardiaFirmat,
+  JefePlantaFirmat:this.JefePlantaFirmat,
+  JefeDistritoFirmat:this.JefeDistritoFirmat,
+ personalGuardiaRufino: this.personalGuardiaRufino,
+ JefePlantaRufino: this.JefePlantaRufino,
+ JefeDistritoRufino: this.JefeDistritoRufino,
+ personalGuardiaSanLorenzo: this.personalGuardiaSanLorenzo,
+ JefePlantaSanLorenzo: this.JefePlantaSanLorenzo,
+  JefeDistritoSanLorenzo:this.JefeDistritoSanLorenzo,
+ personalGuardiaAco: this.personalGuardiaAco,
+JefePlantaAco:  this.JefePlantaAco,
+ JefeTransporteAco: this.JefeTransporteAco,
+ JefeDistritoAco: this.JefeDistritoAco,
+ JefeProduccionAco: this.JefeProduccionAco,
+ personalGuardiaFunes: this.personalGuardiaFunes,
+ JefePlantaFunes: this.JefePlantaFunes,
+ JefeDistritoFunes: this.JefeDistritoFunes,
+ personalGuardiaRosario: this.personalGuardiaRosario,
+  CcrRosario:this.CcrRosario ,
+  JefeTurnoRosario:this.JefeTurnoRosario,
+ JefePlantaRosario: this.JefePlantaRosario,
+  JefeDistritoRosario:this.JefeDistritoRosario,
+  personalGuardiaGalvez:this.personalGuardiaGalvez,
+  JefePlantaGalvez:this.JefePlantaGalvez,
+  JefeDistritoGalvez:this.JefeDistritoGalvez,
+  personalGuardiaBermudez:this.personalGuardiaBermudez,
+  JefePlantaBermudez:this.JefePlantaBermudez,
+  JefeDistritoBermudez:this.JefeDistritoBermudez,
+
+  equiposEspecificosTransmisoresNivel: this.equiposEspecificosTransmisoresNivel,
+  equiposEspecificosTransmisoresPresion: this.equiposEspecificosTransmisoresPresion,
+  equiposEspecificosTransmisoresCaudal: this.equiposEspecificosTransmisoresCaudal,
+  equiposEspecificosTransmisoresCloro:this.equiposEspecificosTransmisoresCloro,
+  equiposEspecificosTransmisoresTemperatura: this. equiposEspecificosTransmisoresTemperatura,
+  equiposEspecificosTransmisoresPh: this.equiposEspecificosTransmisoresPh,
+  equiposEspecificosTransmisoresMovimiento: this.equiposEspecificosTransmisoresMovimiento,
+  equiposEspecificosSensoresCaudal: this.equiposEspecificosSensoresCaudal,
+  equiposEspecificosSensoresConductividad: this.equiposEspecificosSensoresConductividad,
+  equiposEspecificosSensoresPh: this.equiposEspecificosSensoresPh,
+  equiposEspecificosSensoresCloro:this.equiposEspecificosSensoresCloro,
+  equiposEspecificosSensoresTemperatura: this.equiposEspecificosSensoresTemperatura,
+  equiposEspecificosSensoresMovimiento: this.equiposEspecificosSensoresMovimiento,
+  equiposEspecificosDisplay: this.equiposEspecificosDisplay,
+  equiposEspecificosFuentes12V: this.equiposEspecificosFuentes12V,
+  equiposEspecificosFuentes24V:this. equiposEspecificosFuentes24V,
+  equiposEspecificosBoyas: this.equiposEspecificosBoyas,
+  equiposEspecificosSwitchEthernet:this.equiposEspecificosSwitchEthernet,
+  equiposEspecificosSwitchCaudal: this.equiposEspecificosSwitchCaudal,
+  equiposEspecificosSwitchPresion: this. equiposEspecificosSwitchPresion,
+  equiposEspecificosMonitores: this.equiposEspecificosMonitores,
+  equiposEspecificosOtrosEquipos:this.equiposEspecificosOtrosEquipos
+
+
+
     };
 
     this._FirebaseService.agregarCategoria(DATOS).then(
@@ -177,19 +407,15 @@ console.log(INTERVENCION);
   capturaArray3(array3: any): void {
     this.arrayfallas3 = array3;
   }
-  capturaArray4(array4: any): void {
+  capturaArray4(array4: any) {
     this.arrayfallas4 = array4;
   }
 
-  capturaEstaciones(array1: any): void {
+  capturaEstaciones(array1: any) {
     this.estaciones = array1;
+
   }
 
-  capturaPersonalDistritos(event: any): void {
-    console.log(event);
-    console.log(200);
-    this.personalDistritos = event;
-  }
 
   capturaEquipoRetiradoEvent2(retirado: boolean) {
     this.equipoRetirado2 = retirado;
@@ -229,6 +455,7 @@ console.log(INTERVENCION);
 
   eliminarEquipoFallaEvent2(retirado: boolean) {
     this.agregarEquipoFalla2 = retirado;
+
   }
 
   eliminarEquipoFallaEvent3(retirado: boolean) {
@@ -334,24 +561,40 @@ console.log(INTERVENCION);
     this.rehacerBotonAgrega8 = rehacerBotonAgregado;
   }
 
+  generoGastos(event:any){
+    console.log(event.value.label)
+    if(event.value.label=='Si'){
+      console.log(event.value.label)
+      this.gastaron=true;
+    }else{
+      this.gastaron=false;
+    }
+  }
 
 
 
   ObtenerDatos() {
+    this._comunicacionService.recibirPersonalDistritos().subscribe((data)=>{
+      this.personalDistritos=data;
+
+    })
     this._FirebaseService.obtenerDatos().subscribe((data) => {
+
       this.listDatos = [];
+      this.listDatos=data;
+      this.distritos = data[0].distritos;
+      this.estadoEquipos = data[0].estadoEquipos;
+      this.PersonalATP = data[0].PersonalATP;
+     this.equiposEnFalla=data[0].equiposEnFalla;
+     this.HuboGastos=data[0].HuboGastos;
 
-      data.forEach((element: any) => {
-        this.listDatos.push(element);
-        console.log(this.listDatos);
-      });
-      this.distritos = this.listDatos[0].distritos;
-      this._comunicacionService.enviarDatos(this.listDatos);
 
-      this.estaciones = this.listDatos[0].estaciones;
-      this.estadoEquipos = this.listDatos[0].estadoEquipos;
-      this.PersonalATP = this.listDatos[0].PersonalATP;
-      this.equiposEnFalla = this.listDatos[0].equiposEnFalla;
+      this._comunicacionService.enviarDatos(data);
+
+
+
+
+
     });
   }
 }

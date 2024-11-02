@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ComunicacionService } from 'src/app/services/comunicacion.service';
 
 @Component({
   selector: 'app-aviso-falla-assa',
@@ -11,4 +12,7 @@ export class AvisoFallaAssaComponent {
   @Input() personalDistritos!:any[];
   @Input() etiquetaLabel!:string;
   @Input() rellenarCampo!:string;
+
+
+
 }

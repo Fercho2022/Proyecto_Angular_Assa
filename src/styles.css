@@ -3,6 +3,7 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 
+
 body {
   font-family: var(--font-family);
 }
@@ -32,13 +33,7 @@ html, body{
     padding: 15px;
     text-align: center;
 
-
-
-
 }
-
-
-
 
 .fa-regular{
   color:deepskyblue;
@@ -66,6 +61,7 @@ html, body{
 .red-icon{
   color:#e9062c
 }
+
 .spinner-border{
   height: 1.5rem;
   width: 1.5rem
@@ -91,5 +87,11 @@ html, body{
 
 
 }
+.tamaño1{
+  margin-left: -20px;
+  min-width: 120%;
+}
 
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

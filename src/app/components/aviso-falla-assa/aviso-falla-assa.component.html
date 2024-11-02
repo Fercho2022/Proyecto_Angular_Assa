@@ -3,9 +3,11 @@
   <p-dropdown
   [options]="personalDistritos"
   optionLabel="label"
+  [group]="true"
   [showClear]="true"
   [style]="{ minWidth: '100%', 'padding-top': '-5px', maxWidth: '100%', }"
   [placeholder]="rellenarCampo"
+
 >
   <ng-template let-group pTemplate="group">
     <div class="flex align-items-center">

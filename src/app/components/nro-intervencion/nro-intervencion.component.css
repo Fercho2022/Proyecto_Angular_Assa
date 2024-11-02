@@ -1,9 +1,25 @@
 .invalid-icon {
   color: red;
-  cursor: pointer;
+
 }
 
 .valid-icon {
   color: green; /* o el color que desees para el icono válido */
-  cursor: pointer;
+
 }
+
+::ng-deep .p-datepicker table td > span  {
+  background-color: rgb(0, 145, 255);
+}
+
+
+::ng-deep .p-datepicker table td.p-datepicker-today > span {
+
+  background-color: burlywood
+}
+
+.invalid-calendar .ui-button {
+  background-color: red !important;
+ }
+
+

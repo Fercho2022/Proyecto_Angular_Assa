@@ -1,275 +1,392 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ComunicacionService } from 'src/app/services/comunicacion.service';
 
 @Component({
   selector: 'app-distrito-falla',
   templateUrl: './distrito-falla.component.html',
-  styleUrls: ['./distrito-falla.component.css']
+  styleUrls: ['./distrito-falla.component.css'],
 })
 export class DistritoFallaComponent {
-  @Input() distritos!:any[];
-  @Input() listDatos!:any[];
-  @Input() rellenarCampo1!:string;
-  @Input()  etiquetaLabel!:string;
-  @Output() arraynewItenEvent1=new EventEmitter<any[]>();
-  @Output() arraynewItemEvent3=new EventEmitter<any>();
-  @Output() selectDistritoItemEvent=new EventEmitter<string>();
+  @Input() distritos!: any[];
+  @Input() listDatos!: any[];
+  @Input() rellenarCampo1!: string;
+  @Input() etiquetaLabel!: string;
+
+  @Output() arraynewItenEvent1 = new EventEmitter<any[]>();
+
+  @Output() selectDistritoItemEvent = new EventEmitter<string>();
+  @Output() distritoIntervencionChanged = new EventEmitter();
+
+  array!: any[];
+  PersonalATP!: any[];
+  equiposEnFalla!: any[];
+  personalDistritos!: any[];
+  estaciones!: any[];
+  arrayPersonalDistritos!: any[];
 
 
-  array!:any[];
-  PersonalATP!:any[];
-  equiposEnFalla!:any[];
-  personalDistritos!:any[];
-  estaciones!:any[];
-  arrayPersonalDistritos!:any[];
-  selecDistrito!:string;
+  constructor(private _comunicacionService: ComunicacionService) {
 
 
-arrayListPersonalDistritos(){
-console.log(120)
-  this.arraynewItemEvent3.emit(this.personalDistritos);
-console.log(this.personalDistritos)
-}
+  }
 
-  arrayListEstaciones(){
-console.log(300)
-this.arraynewItenEvent1.emit(this.estaciones)
+
+  // Variable para realizar un seguimiento del envío del formulario
+
+  onDistritoIntervencionChanged(value: any) {
+    this.distritoIntervencionChanged.emit(value);
+  }
+
+  arrayListPersonalDistritos() {
+    this._comunicacionService.enviarPersonalDistritos(this.personalDistritos);
+  }
+
+  arrayListEstaciones() {
+    this.arraynewItenEvent1.emit(this.estaciones);
   }
 
   seleccionFiltroDistrito(event: any) {
+    this.onDistritoIntervencionChanged(event.value.label);
+
     if (event.value.label !== undefined) {
-this.selecDistrito=event.value.label;
       this.estaciones = [];
       this.personalDistritos = [];
 
-      this.array = this.listDatos[0].estaciones;
-      console.log(event.value.label)
-      this.arrayPersonalDistritos = this.listDatos[0].personalDistritos;
-
-
       switch (event.value.label) {
-
         case 'Rosario':
-          this.array.forEach((elements: any) => {
-            if (
-              elements.label == 'Planta Potabilizadora Rosario' ||
-              elements.label == 'Vinculadas Elevadoras cloacales' ||
-              elements.label == 'Vinculadas Agua'
-            ) {
-              this.estaciones.push(elements);
-            }
-          });
+          const array1 = [
+            {
+              label: 'Planta Potabilizadora Rosario',
+              items: this.listDatos[0].estacionesRosarioPlanta,
+            },
+            {
+              label: 'Vinculadas Agua',
+              items: this.listDatos[0].estacionesRosarioVinculadasAgua,
+            },
+            {
+              label: 'Vinculadas Elevadoras cloacales',
+              items: this.listDatos[0].estacionesRosarioVinculadasCloacales,
+            },
+          ];
+          this.estaciones = array1;
 
-          this.arrayPersonalDistritos.forEach((elements: any) => {
-
-            if (elements.label == 'Rosario') {
-              elements.items.forEach((item:any)=>{
-                this.personalDistritos.push(item);
-              })
-
-            }
-
-          });
           this.arrayListEstaciones();
 
-          console.log(this.personalDistritos)
-          console.log(100)
+          const arrayA = [
+            {
+              label: 'Guardia electromecánica',
+              items: this.listDatos[0].personalGuardiaRosario,
+            },
+            {
+              label: 'Jefe de Planta',
+              items: this.listDatos[0].JefePlantaRosario,
+            },
+            {
+              label: 'Jefe de Distrito',
+              items: this.listDatos[0].JefeDistritoRosario,
+            },
+            {
+              label: 'Jefe de Turno',
+              items: this.listDatos[0].JefeTurnoRosario,
+            },
+            {
+              label: 'Ccr',
+              items: this.listDatos[0].CcrRosario,
+            },
+          ];
+          this.personalDistritos = arrayA;
+
           this.arrayListPersonalDistritos();
 
           return;
         case 'Capitan Bermudez':
-          this.array.forEach((elements: any) => {
-            if (elements.label == 'Capitan Bermudez') {
-              this.estaciones.push(elements);
-            }
-          });
-
-          this.arrayPersonalDistritos.forEach((elements: any) => {
-
-            if (elements.label == 'Capitán Bermudez') {
-              elements.items.forEach((item:any)=>{
-                this.personalDistritos.push(item);
-              })
-
-            }
-
-          });
-          console.log(100)
-          console.log(this.personalDistritos)
+          const array2 = [
+            {
+              label: 'Capitan Bermudez',
+              items: this.listDatos[0].estacionesBermudez,
+            },
+          ];
+          this.estaciones = array2;
           this.arrayListEstaciones();
+
+          const arrayB = [
+            {
+              label: 'Guardia electromecánica',
+              items: this.listDatos[0].personalGuardiaBermudez,
+            },
+            {
+              label: 'Jefe de Planta',
+              items: this.listDatos[0].JefePlantaBermudez,
+            },
+            {
+              label: 'Jefe de Distrito',
+              items: this.listDatos[0].JefeDistritoBermudez,
+            },
+          ];
+          this.personalDistritos = arrayB;
+
           this.arrayListPersonalDistritos();
 
           return;
 
         case 'Casilda':
-          this.array.forEach((elements: any) => {
-            if (elements.label == 'Casilda') {
-              this.estaciones.push(elements);
-            }
-          });
+          const array3 = [
+            {
+              label: 'Casilda',
+              items: this.listDatos[0].estacionesCasilda,
+            },
+          ];
+          this.estaciones = array3;
 
-          this.arrayPersonalDistritos.forEach((elements: any) => {
-
-            if (elements.label == 'Casilda') {
-              elements.items.forEach((item:any)=>{
-
-                  this.personalDistritos.push(item.items);
-
-
-              })
-            }
-
-          });
-          console.log(100)
-          console.log(this.personalDistritos)
           this.arrayListEstaciones();
+          const arrayC = [
+            {
+              label: 'Guardia electromecánica',
+              items: this.listDatos[0].personalGuardiaCasilda,
+            },
+            {
+              label: 'Jefe de Planta',
+              items: this.listDatos[0].JefePlantaCasilda,
+            },
+            {
+              label: 'Jefe de Distrito',
+              items: this.listDatos[0].JefeDistritoCasilda,
+            },
+          ];
+          this.personalDistritos = arrayC;
+
           this.arrayListPersonalDistritos();
 
           return;
         case 'Firmat':
-          this.array.forEach((elements: any) => {
-            if (elements.label == 'Firmat') {
-              this.estaciones.push(elements);
-            }
-          });
+          const array4 = [
+            {
+              label: 'Firmat',
+              items: this.listDatos[0].estacionesFirmat,
+            },
+          ];
+          this.estaciones = array4;
 
-          this.arrayPersonalDistritos.forEach((elements: any) => {
-
-            if (elements.label == 'Firmat') {
-              this.personalDistritos.push(elements.items[0].items);
-            }
-
-          });
-          console.log(this.personalDistritos)
           this.arrayListEstaciones();
+          const arrayD = [
+            {
+              label: 'Guardia electromecánica',
+              items: this.listDatos[0].personalGuardiaFirmat,
+            },
+            {
+              label: 'Jefe de Planta',
+              items: this.listDatos[0].JefePlantaFirmat,
+            },
+            {
+              label: 'Jefe de Distrito',
+              items: this.listDatos[0].JefeDistritoFirmat,
+            },
+          ];
+          this.personalDistritos = arrayD;
           this.arrayListPersonalDistritos();
 
           return;
         case 'Cañada de Gomez':
-          this.array.forEach((elements: any) => {
-            if (elements.label == 'Cañada de Gomez') {
-              this.estaciones.push(elements);
-            }
-          });
+          const array5 = [
+            {
+              label: 'Cañada de Gomez',
+              items: this.listDatos[0].estacionesCañada,
+            },
+          ];
+          this.estaciones = array5;
 
-          this.arrayPersonalDistritos.forEach((elements: any) => {
-
-            if (elements.label == 'Cañada de Gomez') {
-              this.personalDistritos.push(elements.items[0].items);
-            }
-
-          });
-          console.log(this.personalDistritos)
           this.arrayListEstaciones();
+          const arrayE = [
+            {
+              label: 'Guardia electromecánica',
+              items: this.listDatos[0].personalGuardiaCañada,
+            },
+            {
+              label: 'Jefe de Planta',
+              items: this.listDatos[0].JefePlantaCasilda,
+            },
+            {
+              label: 'Jefe de Distrito',
+              items: this.listDatos[0].JefeDistritoCañada,
+            },
+          ];
+          this.personalDistritos = arrayE;
           this.arrayListPersonalDistritos();
           return;
         case 'Funes':
-          this.array.forEach((elements: any) => {
-            if (elements.label == 'Funes') {
-              this.estaciones.push(elements);
-            }
-          });
+          const array6 = [
+            {
+              label: 'Funes',
+              items: this.listDatos[0].estacionesFunes,
+            },
+          ];
+          this.estaciones = array6;
 
-          this.arrayPersonalDistritos.forEach((elements: any) => {
-
-            if (elements.label == 'Funes') {
-              this.personalDistritos.push(elements.items[0].items);
-            }
-
-          });
-          console.log(this.personalDistritos)
           this.arrayListEstaciones();
+          const arrayF = [
+            {
+              label: 'Guardia electromecánica',
+              items: this.listDatos[0].personalGuardiaFunes,
+            },
+            {
+              label: 'Jefe de Planta',
+              items: this.listDatos[0].JefePlantaFunes,
+            },
+            {
+              label: 'Jefe de Distrito',
+              items: this.listDatos[0].JefeDistritoFunes,
+            },
+          ];
+          this.personalDistritos = arrayF;
           this.arrayListPersonalDistritos();
           return;
         case 'Granadero Baigorria':
-          this.array.forEach((elements: any) => {
-            if (elements.label == 'Granadero Baigorria') {
-              this.estaciones.push(elements);
-            }
-          });
+          const array7 = [
+            {
+              label: 'Granadero Baigorria',
+              items: this.listDatos[0].estacionesBaigorria,
+            },
+          ];
+          this.estaciones = array7;
 
-          this.arrayPersonalDistritos.forEach((elements: any) => {
-
-            if (elements.label == 'Granadero Baigorria') {
-              this.personalDistritos.push(elements.items[0].items);
-            }
-
-          });
-          console.log(this.personalDistritos)
           this.arrayListEstaciones();
+          const arrayG = [
+            {
+              label: 'Guardia electromecánica',
+              items: this.listDatos[0].personalGuardiaBaigorria,
+            },
+            {
+              label: 'Jefe de Planta',
+              items: this.listDatos[0].JefePlantaBaigorria,
+            },
+            {
+              label: 'Jefe de Distrito',
+              items: this.listDatos[0].JefeDistritoBaigorria,
+            },
+          ];
+          this.personalDistritos = arrayG;
           this.arrayListPersonalDistritos();
 
           return;
         case 'Monje Acueducto':
-          this.array.forEach((elements: any) => {
-            if (elements.label == 'Monje Acueducto') {
-              this.estaciones.push(elements);
-            }
-          });
+          const array8 = [
+            {
+              label: 'Estaciones Acueducto',
+              items: this.listDatos[0].estacionesAco,
+            },
+            {
+              label: 'Planta Acueducto',
+              items: this.listDatos[0].estacionesAcoPlanta,
+            },
+          ];
+          this.estaciones = array8;
 
-          this.arrayPersonalDistritos.forEach((elements: any) => {
-
-            if (elements.label == 'Acueducto Centro Oeste') {
-              this.personalDistritos.push(elements.items[0].items);
-            }
-
-          });
-          console.log(this.personalDistritos)
           this.arrayListEstaciones();
+
+          const arrayH = [
+            {
+              label: 'Guardia electromecánica',
+              items: this.listDatos[0].personalGuardiaAco,
+            },
+            {
+              label: 'Jefe de Planta',
+              items: this.listDatos[0].JefePlantaAco,
+            },
+            {
+              label: 'Jefe de Distrito',
+              items: this.listDatos[0].JefeDistritoAco,
+            },
+            {
+              label: 'Jefe de Transporte',
+              items: this.listDatos[0].JefeTransporteAco,
+            },
+            {
+              label: 'Jefe de Transporte',
+              items: this.listDatos[0].JefeProduccionAco,
+            },
+          ];
+          this.personalDistritos = arrayH;
           this.arrayListPersonalDistritos();
           return;
         case 'Rufino':
-          this.array.forEach((elements: any) => {
-            if (elements.label == 'Rufino') {
-              this.estaciones.push(elements);
-            }
-          });
-
-          this.arrayPersonalDistritos.forEach((elements: any) => {
-
-            if (elements.label == 'Rufino') {
-              this.personalDistritos.push(elements.items[0].items);
-            }
-
-          });
-          console.log(this.personalDistritos)
+          const array9 = [
+            {
+              label: 'Rufino',
+              items: this.listDatos[0].estacionesRufino,
+            },
+          ];
+          this.estaciones = array9;
           this.arrayListEstaciones();
+          const arrayI = [
+            {
+              label: 'Guardia electromecánica',
+              items: this.listDatos[0].personalGuardiaRufino,
+            },
+            {
+              label: 'Jefe de Planta',
+              items: this.listDatos[0].JefePlantaRufino,
+            },
+            {
+              label: 'Jefe de Distrito',
+              items: this.listDatos[0].JefeDistritoRufino,
+            },
+          ];
+          this.personalDistritos = arrayI;
+
           this.arrayListPersonalDistritos();
           return;
         case 'San Lorenzo':
-          this.array.forEach((elements: any) => {
-            if (elements.label == 'San Lorenzo') {
-              this.estaciones.push(elements);
-            }
-          });
+          const array10 = [
+            {
+              label: 'San Lorenzo',
+              items: this.listDatos[0].estacionesSanLorenzo,
+            },
+          ];
+          this.estaciones = array10;
 
-          this.arrayPersonalDistritos.forEach((elements: any) => {
-
-            if (elements.label == 'San Lorenzo') {
-              this.personalDistritos.push(elements.items[0].items);
-            }
-
-          });
-          console.log(this.personalDistritos)
           this.arrayListEstaciones();
+          const arrayJ = [
+            {
+              label: 'Guardia electromecánica',
+              items: this.listDatos[0].personalGuardiaSanLorenzo,
+            },
+            {
+              label: 'Jefe de Planta',
+              items: this.listDatos[0].JefePlantaSanLorenzo,
+            },
+            {
+              label: 'Jefe de Distrito',
+              items: this.listDatos[0].JefeDistritoSanLorenzo,
+            },
+          ];
+          this.personalDistritos = arrayJ;
           this.arrayListPersonalDistritos();
           return;
         case 'Villa Gdor. Galvez':
-          this.array.forEach((elements: any) => {
-            if (elements.label == 'Villa Gdor. Galvez') {
-              this.estaciones.push(elements);
-            }
-          });
+          const array11 = [
+            {
+              label: 'Villa Gdor Galvez',
+              items: this.listDatos[0].estacionesGalvez,
+            },
+          ];
+          this.estaciones = array11;
 
-          this.arrayPersonalDistritos.forEach((elements: any) => {
-
-            if (elements.label == 'Villa Gdor. Galvez') {
-             const array2= elements.items[0].items
-              this.personalDistritos.push(elements.items[0].items);
-            }
-
-          });
-          console.log(this.personalDistritos)
           this.arrayListEstaciones();
+          const arrayK = [
+            {
+              label: 'Guardia electromecánica',
+              items: this.listDatos[0].personalGuardiaGalvez,
+            },
+            {
+              label: 'Jefe de Planta',
+              items: this.listDatos[0].JefePlantaGalvez,
+            },
+            {
+              label: 'Jefe de Distrito',
+              items: this.listDatos[0].JefeDistritoGalvez,
+            },
+          ];
+          this.personalDistritos = arrayK;
           this.arrayListPersonalDistritos();
           return;
         default:
@@ -277,6 +394,4 @@ this.selecDistrito=event.value.label;
       }
     }
   }
-
-
 }

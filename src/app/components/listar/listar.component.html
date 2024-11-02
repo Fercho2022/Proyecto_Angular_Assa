@@ -1,0 +1,55 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="titulo mb-3 ">{{titulo | uppercase}}</h5>
+
+    <p-table
+  id="miTabla"
+  #dt1
+  [value]="camposListar"
+  [scrollable]="true"
+  scrollHeight="400px"
+  [tableStyle]="{ 'min-width': '25rem' }"
+  [paginator]="true"
+  [rows]="5"
+  [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[5, 10, 25, 50]"
+>
+
+
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Id</th>
+      <th>Distritos</th>
+
+      <th>Acciones</th>
+      <th><button style="margin-left: 40px;" class="btn btn-success btn-lg" type="button"  (click)="agregarDistrito()" >Agregar</button></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-distrito let-index="rowIndex">
+    <tr>
+      <td>{{ index }}</td>
+      <td>{{ distrito.label }}</td>
+      <td>
+        <a class="pointer" style="color: #1878b0">
+          <span class="pi pi-map-marker" style="font-size: 1.3rem" (click)="editarDistrito(index, distrito)"></span>
+
+
+        </a>
+
+        <a class="pointer" style="color: #e15639">
+          <span
+            class="pi pi-trash"
+            style="font-size: 1.3rem"
+            (click)="eliminarDistrito(index, $event)"
+          ></span>
+
+        </a>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+  </div>
+</div>
+

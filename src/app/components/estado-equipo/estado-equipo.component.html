@@ -1,10 +1,11 @@
+
 <span class="p-float-label">
   <p-dropdown
     [options]="estadoEquipos"
     optionLabel="label"
     [showClear]="true"
     [style]="{ minWidth: '100%', 'padding-top': '-5px', maxWidth: '100%', }"
-
+    (onChange)="onEstadoEquipoIntervencionChanged($event)"
     [placeholder]="rellenarCampo"
   >
     <ng-template let-group pTemplate="group">
@@ -16,3 +17,4 @@
 
   <label>{{etiquetaLabel}}</label>
 </span>
+

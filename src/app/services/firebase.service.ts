@@ -7,7 +7,6 @@ import {
 } from '@angular/fire/auth';
 
 import {
-
   Firestore,
   addDoc,
   arrayRemove,
@@ -59,7 +58,6 @@ export class FirebaseService {
   }
 
   async agregarCategoria(datos: Datos): Promise<any> {
-
     const Ref = collection(this.firestore, 'ConjuntoDatos');
 
     return await addDoc(Ref, datos);
@@ -74,7 +72,7 @@ export class FirebaseService {
   }
   async agregar_Distrito(distrito: any): Promise<any> {
     // Obtiene la referencia al documento con su Id generado automaticamente
-    const RefDoc = doc(this.firestore, 'ConjuntoDatos', 'XGU0SEpdBilIera0AGhS');
+    const RefDoc = doc(this.firestore, 'ConjuntoDatos', 'v4aVcNpJPY2rWBZiU706');
 
     return await updateDoc(RefDoc, {
       distritos: arrayUnion(distrito),
@@ -82,16 +80,15 @@ export class FirebaseService {
   }
 
   async deleteDistrito(distrito: any): Promise<any> {
-    const RefDoc = doc(this.firestore, 'ConjuntoDatos', 'XGU0SEpdBilIera0AGhS');
+    const RefDoc = doc(this.firestore, 'ConjuntoDatos', 'v4aVcNpJPY2rWBZiU706');
 
     return await updateDoc(RefDoc, {
       distritos: arrayRemove(distrito),
     });
   }
 
-  async updateDistrito(id:number, distrito:any){
-
-    const RefDoc = doc(this.firestore, 'ConjuntoDatos', 'XGU0SEpdBilIera0AGhS');
+  async updateDistrito(id: number, distrito: any) {
+    const RefDoc = doc(this.firestore, 'ConjuntoDatos', 'v4aVcNpJPY2rWBZiU706');
 
     return await updateDoc(RefDoc, {
       distritos: arrayUnion(distrito),
@@ -100,7 +97,7 @@ export class FirebaseService {
 
   async agregar_Equipo(equipo: any): Promise<any> {
     // Obtiene la referencia al documento con su Id generado automaticamente
-    const RefDoc = doc(this.firestore, 'ConjuntoDatos', 'XGU0SEpdBilIera0AGhS');
+    const RefDoc = doc(this.firestore, 'ConjuntoDatos', 'v4aVcNpJPY2rWBZiU706');
 
     return await updateDoc(RefDoc, {
       equiposEnFalla: arrayUnion(equipo),
@@ -109,7 +106,7 @@ export class FirebaseService {
 
   async agregar_Estado(estado: any): Promise<any> {
     // Obtiene la referencia al documento con su Id generado automaticamente
-    const RefDoc = doc(this.firestore, 'ConjuntoDatos', 'XGU0SEpdBilIera0AGhS');
+    const RefDoc = doc(this.firestore, 'ConjuntoDatos', 'v4aVcNpJPY2rWBZiU706');
 
     return await updateDoc(RefDoc, {
       estadoEquipos: arrayUnion(estado),
@@ -118,7 +115,7 @@ export class FirebaseService {
 
   async agregar_Especificidad(especificidad: any): Promise<any> {
     // Obtiene la referencia al documento con su Id generado automaticamente
-    const RefDoc = doc(this.firestore, 'ConjuntoDatos', 'XGU0SEpdBilIera0AGhS');
+    const RefDoc = doc(this.firestore, 'ConjuntoDatos', 'v4aVcNpJPY2rWBZiU706');
 
     return await updateDoc(RefDoc, {
       equiposEspecificosFalla: arrayUnion(especificidad),

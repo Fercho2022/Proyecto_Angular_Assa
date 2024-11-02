@@ -1,0 +1,25 @@
+:host ::ng-deep {
+  #miTabla {
+    .p-datatable-header {
+      padding-top: 5px;
+
+    }
+  }
+}
+
+.pointer{
+  cursor:pointer;
+  margin-right: 10px;
+  margin-left:5px;
+
+}
+
+::ng-deep .p-button.p-button-warning {
+
+  background-color:rgb(242, 69, 50);
+  height: 40px;
+  width: 100px;
+  margin-right:-15px ;
+  }
+
+

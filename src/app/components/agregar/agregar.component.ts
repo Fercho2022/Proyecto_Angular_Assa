@@ -18,6 +18,7 @@ export class AgregarComponent {
 @Input() campoInput!: string;
 @Input() escribirCampo!: string;
 @Input() campo!: string;
+@Input() distritoEditar!:any;
 
 estado!:string;
 
@@ -33,7 +34,6 @@ estado!:string;
   }
 
   ngOnInit(): void {
-
 
   }
 
@@ -102,10 +102,15 @@ if(this.form.value.estado!==undefined){
     }
   );
 
+
+
+
 }
 
 
-
+setTimeout(() => {
+  this._comunicacionService.enviarHabilitarAgregarDistrito(true);
+}, 1000);
 
 
 

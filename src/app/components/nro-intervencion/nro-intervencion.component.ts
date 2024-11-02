@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -9,20 +9,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class NroIntervencionComponent {
 
-@Input() nroIntervencionForm: FormGroup;
+
 @Output() nroIntervencionChanged = new EventEmitter();
- // Variable para realizar un seguimiento del envío del formulario
 
 
-constructor(private fb: FormBuilder) {
-  this.nroIntervencionForm = this.fb.group({
-    nroIntervencion: [null, Validators.required], // FormControl específico para "app-nro-intervencion"
+onNroIntervencionChanged(value:Date) {
 
-  });
-}
-
-onNroIntervencionChanged() {
-  this.nroIntervencionChanged.emit(this.nroIntervencionForm.value);
+  this.nroIntervencionChanged.emit(value);
 }
 
 

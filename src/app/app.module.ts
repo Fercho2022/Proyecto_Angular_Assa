@@ -43,6 +43,8 @@ import { RecepcionAvisoATPComponent } from './components/recepcion-aviso-atp/rec
 import { PersonalATPAsistioComponent } from './components/personal-atp-asistio/personal-atp-asistio.component';
 import { ImputSerieComponent } from './components/imput-serie/imput-serie.component';
 import { AgregarEquiposFallanComponent } from './components/agregar-equipos-fallan/agregar-equipos-fallan.component';
+import { ListarComponent } from './components/listar/listar.component';
+import { MapsModule } from './maps/maps.module';
 
 
 
@@ -81,6 +83,7 @@ import { AgregarEquiposFallanComponent } from './components/agregar-equipos-fall
     ImputSerieComponent,
     EquipoRetiradoInstaladoComponent,
     AgregarEquiposFallanComponent,
+    ListarComponent,
 
 
 
@@ -98,6 +101,7 @@ import { AgregarEquiposFallanComponent } from './components/agregar-equipos-fall
     provideAuth(() => getAuth()),
 BrowserAnimationsModule,
     FormsModule,
+    MapsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

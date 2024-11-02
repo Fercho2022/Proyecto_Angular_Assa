@@ -1,12 +1,14 @@
+
 <span class="p-float-label">
   <p-dropdown
     [options]="distritos"
-    optionLabel="label"
+
     [showClear]="true"
     [style]="{ minWidth: '100%', 'padding-top': '-5px', maxWidth: '100%', }"
     (onChange)="seleccionFiltroDistrito($event)"
 
     [placeholder]="rellenarCampo1"
+
   >
     <ng-template let-group pTemplate="group">
       <div class="flex align-items-center">
@@ -17,3 +19,4 @@
 
   <label>{{etiquetaLabel}}</label>
 </span>
+

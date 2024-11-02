@@ -1,12 +1,13 @@
-<span class="p-float-label">
 
+<span class="p-float-label">
   <p-dropdown
     [options]="arrayfallas1"
-    [group]="true"
+   [group]="true"
     [showClear]="true"
     [style]="{ minWidth: '100%', 'padding-top': '-5px', maxWidth: '100%', }"
     [placeholder]="rellenarCampo"
 
+    (onChange)="onEquipoEspecificoFallaIntervencionChanged($event)"
 
   >
     <ng-template let-group pTemplate="group">
@@ -18,3 +19,4 @@
 
   <label>{{etiquetaLabel}}</label>
 </span>
+

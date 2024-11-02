@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseService } from 'src/app/services/firebase.service';
-import { MessageService } from 'primeng/api';
+
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-registrar-usuario',
   templateUrl: './registrar-usuario.component.html',
   styleUrls: ['./registrar-usuario.component.css'],
-  providers: [MessageService],
+
 })
 export class RegistrarUsuarioComponent {
   myform: FormGroup;
@@ -16,7 +17,8 @@ export class RegistrarUsuarioComponent {
   constructor(
     private fb: FormBuilder,
     private _FirebaseService: FirebaseService,
-    private messageService: MessageService,
+    private messageService:MessageService,
+
     private router: Router
   ) {
     this.myform = this.fb.group({

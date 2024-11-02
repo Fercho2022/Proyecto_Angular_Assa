@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-
+import { Component, EventEmitter, Input, Output,  } from '@angular/core';
+import { ComunicacionService } from 'src/app/services/comunicacion.service';
 
 @Component({
   selector: 'app-equipo-falla',
@@ -10,432 +10,522 @@ export class EquipoFallaComponent {
   @Input() listDatos!: any[];
   @Input() rellenarCampo!: string;
   @Input() etiquetaLabel!: string;
+
+
   @Input() equiposEnFalla!: any[];
   @Output() arraynewItemEvent = new EventEmitter<any[]>();
+
+  @Output() equipoFallaIntervencionChanged = new EventEmitter();
+  @Output() limpiarDropdownChanged = new EventEmitter();
+
+
 
   arrayfallas1!: any[];
   estadoEquipos!: any[];
 
+  constructor(
+    private _comunicacionService:ComunicacionService
+  ){
+
+  }
+
+  ngAfterViewInit(){
+
+
+  }
+
+  onEquipoFallaIntervencionChanged(value: any) {
+
+    this.equipoFallaIntervencionChanged.emit(value);
+
+  }
+
 
 
   seleccionEquiposGralFalla1(event: any) {
+    this.onEquipoFallaIntervencionChanged(event.value);
     if (event.value !== undefined) {
       this.arrayfallas1 = [];
       this.estadoEquipos = this.listDatos[0].estadoEquipos;
-      console.log(this.estadoEquipos);
+
+
 
       switch (event.value.label) {
-        case 'Procesador M340':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Procesador M340') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
-          });
+        case 'Procesador':
+          const equipoEspecifico1 = [
+            { label: 'Procesadores' },
+            { items: this.listDatos[0].equiposEspecificosProcesadores },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico1;
 
           this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
 
-        case 'Procesador M580':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Procesador M580') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
-
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
-        case 'Procesador M221':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Procesador M221') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
-
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
-        case 'Procesador Twido':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Procesador Twido') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
-
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
-        case 'Procesador Nano':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Procesador Nano') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
-
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
         case 'Módulos M340':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Módulos M340') {
-              elements.items.forEach((element: any) => {
-                if (
-                  element.label == 'AI M340' ||
-                  element.label == 'AO M340' ||
-                  element.label == 'DI M340' ||
-                  element.label == 'DO M340'
-                ) {
-                  this.arrayfallas1.push(element);
-                }
-              });
-            }
+          const equipoEspecifico2 = [
+            { label: 'Módulos M340' },
+            { items: this.listDatos[0].equiposEspecificosModulosM340 },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arrayfallas1 = equipoEspecifico2;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
+
         case 'Módulos M221':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Módulos M221') {
-              elements.items.forEach((element: any) => {
-                if (
-                  element.label == 'AI M221' ||
-                  element.label == 'AO M221' ||
-                  element.label == 'DI M221' ||
-                  element.label == 'DO M221'
-                ) {
-                  this.arrayfallas1.push(element);
-                }
-              });
-            }
+          const equipoEspecifico3 = [
+            { label: 'Módulos M221' },
+            { items: this.listDatos[0].equiposEspecificosModulosM221 },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arrayfallas1 = equipoEspecifico3;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
+
         case 'Módulos Twido':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Módulos Twido') {
-              elements.items.forEach((element: any) => {
-                if (
-                  element.label == 'AI Twido' ||
-                  element.label == 'AO Twido' ||
-                  element.label == 'DI Twido' ||
-                  element.label == 'DO Twido'
-                ) {
-                  this.arrayfallas1.push(element);
-                }
-              });
-            }
+          const equipoEspecifico4 = [
+            { label: 'Módulos Twido' },
+            { items: this.listDatos[0].equiposEspecificosModulosTwido },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arrayfallas1 = equipoEspecifico4;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
+
+        case 'Radios':
+          const equipoEspecifico5 = [
+            { label: 'Radios' },
+            { items: this.listDatos[0].equiposEspecificosRadios },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico5;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
+          return;
+
         case 'Comando Bomba 1':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Comando Bomba 1') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          const equipoEspecifico6 = [
+            { label: 'Comando Bomba 1' },
+            { items: this.listDatos[0].equiposEspecificosComandoBomba },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arrayfallas1 = equipoEspecifico6;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
-        case 'Comando Bomba 2':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Comando Bomba 2') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+        case 'Comando Bomba 2':
+          const equipoEspecifico7 = [
+            { label: 'Comando Bomba 2' },
+            { items: this.listDatos[0].equiposEspecificosComandoBomba },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico7;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
         case 'Comando Bomba 3':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Comando Bomba 3') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          const equipoEspecifico8 = [
+            { label: 'Comando Bomba 3' },
+            { items: this.listDatos[0].equiposEspecificosComandoBomba },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arrayfallas1 = equipoEspecifico8;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
         case 'Comando Bomba 4':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Comando Bomba 4') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          const equipoEspecifico9 = [
+            { label: 'Comando Bomba 4' },
+            { items: this.listDatos[0].equiposEspecificosComandoBomba },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arrayfallas1 = equipoEspecifico9;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
+
         case 'Variador BBa1':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Variador BBa1') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          const equipoEspecifico10 = [
+            { label: 'Variadores' },
+            { items: this.listDatos[0].equiposEspecificosVariadores },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arrayfallas1 = equipoEspecifico10;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
-        case 'Variador BBa2':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Variador BBa2') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+        case 'Variador BBa2':
+          const equipoEspecifico11 = [
+            { label: 'Variadores' },
+            { items: this.listDatos[0].equiposEspecificosVariadores },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico11;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
         case 'Variador BBa3':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Variador BBa3') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          const equipoEspecifico12 = [
+            { label: 'Variadores' },
+            { items: this.listDatos[0].equiposEspecificosVariadores },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arrayfallas1 = equipoEspecifico12;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
         case 'Variador BBa4':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Variador BBa4') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          const equipoEspecifico13 = [
+            { label: 'Variadores' },
+            { items: this.listDatos[0].equiposEspecificosVariadores },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arrayfallas1 = equipoEspecifico13;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
-        case 'Arrancador BBa1':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Arrancador BBa1') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+        case 'Arrancador BBa1':
+          const equipoEspecifico14 = [
+            { label: 'Arrancadores' },
+            { items: this.listDatos[0].equiposEspecificosArrancadores },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico14;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
         case 'Arrancador BBa2':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Arrancador BBa2') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          const equipoEspecifico15 = [
+            { label: 'Arrancadores' },
+            { items: this.listDatos[0].equiposEspecificosArrancadores },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arrayfallas1 = equipoEspecifico15;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
         case 'Arrancador BBa3':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Arrancador BBa3') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          const equipoEspecifico16 = [
+            { label: 'Arrancadores' },
+            { items: this.listDatos[0].equiposEspecificosArrancadores },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arrayfallas1 = equipoEspecifico16;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
         case 'Arrancador BBa4':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Arrancador BBa4') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          const equipoEspecifico17 = [
+            { label: 'Arrancadores' },
+            { items: this.listDatos[0].equiposEspecificosArrancadores },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
-        case 'Radios':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Radios') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          this.arrayfallas1 = equipoEspecifico17;
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
-        case 'Fuente de tensión 24V':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Fuente de tensión 24V') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
-
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
-        case 'Fuente de tensión 12V':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Fuente de tensión 12V') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
-
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
-        case 'Procesador Premium':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Procesador Premium') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
-
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
-        case 'Procesador Micro':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Procesador Micro') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
-
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
         case 'Transmisor de nivel':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Transmisor de nivel') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          const equipoEspecifico18 = [
+            { label: 'Transmisores' },
+            { items: this.listDatos[0].equiposEspecificosTransmisoresNivel },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arrayfallas1 = equipoEspecifico18;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
+        case 'Transmisor de presion':
+          const equipoEspecifico19 = [
+            { label: 'Transmisores' },
+            { items: this.listDatos[0].equiposEspecificosTransmisoresPresion },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico19;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
+          return;
+
         case 'Transmisor de caudal':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Transmisor de caudal') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          const equipoEspecifico20 = [
+            { label: 'Transmisores' },
+            { items: this.listDatos[0].equiposEspecificosTransmisoresCaudal },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arrayfallas1 = equipoEspecifico20;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
-        case 'Transmisor de presión':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Transmisor de presión') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+        case 'Transmisor de pH':
+          const equipoEspecifico21 = [
+            { label: 'Transmisores' },
+            { items: this.listDatos[0].equiposEspecificosTransmisoresPh },
+          ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
-        case 'Transmisor de ph':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Transmisor de ph') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          this.arrayfallas1 = equipoEspecifico21;
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
         case 'Transmisor de conductividad':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Transmisor de conductividad') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          const equipoEspecifico22 = [
+            { label: 'Transmisores' },
+            {
+              items:
+                this.listDatos[0].equiposEspecificosTransmisoresConductividad,
+            },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico22;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
+          return;
+        case 'Transmisor de cloro':
+          const equipoEspecifico23 = [
+            { label: 'Transmisores' },
+            { items: this.listDatos[0].equiposEspecificosTransmisoresCloro },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico23;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
+          return;
+        case 'Transmisor de temperatura':
+          const equipoEspecifico24 = [
+            { label: 'Transmisores' },
+            {
+              items:
+                this.listDatos[0].equiposEspecificosTransmisoresTemperatura,
+            },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico24;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
+          return;
+        case 'Transmisor de movimiento':
+          const equipoEspecifico25 = [
+            { label: 'Transmisores' },
+            {
+              items: this.listDatos[0].equiposEspecificosTransmisoresMovimiento,
+            },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico25;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
+          return;
+
+        case 'Sensor de caudal':
+          const equipoEspecifico26 = [
+            { label: 'Sensores' },
+            { items: this.listDatos[0].equiposEspecificosSensoresCaudal },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico26;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
+          return;
+        case 'Sensores de pH':
+          const equipoEspecifico27 = [
+            { label: 'Sensores' },
+            { items: this.listDatos[0].equiposEspecificosSensoresPh },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico27;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
+          return;
+        case 'Transmisor de conductividad':
+          const equipoEspecifico28 = [
+            { label: 'Sensores' },
+            {
+              items: this.listDatos[0].equiposEspecificosSensoresConductividad,
+            },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico28;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
+          return;
+        case 'Sensor de cloro':
+          const equipoEspecifico29 = [
+            { label: 'Sensores' },
+            { items: this.listDatos[0].equiposEspecificosSensoresCloro },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico29;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
+          return;
+        case 'Sensor de temperatura':
+          const equipoEspecifico30 = [
+            { label: 'Transmisores' },
+            { items: this.listDatos[0].equiposEspecificosSensoresTemperatura },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico30;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
+          return;
+        case 'Sensor de movimiento':
+          const equipoEspecifico31 = [
+            { label: 'Sensores' },
+            { items: this.listDatos[0].equiposEspecificosSensoresMovimiento },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico31;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
+          return;
+          case 'Switch presion-Presostato':
+            const equipoEspecifico32 = [
+              { label: 'Switchs' },
+              { items: this.listDatos[0].equiposEspecificosSwitchPresion },
+            ];
+
+            this.arrayfallas1 = equipoEspecifico32;
 
             this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
-        case 'Display':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Display') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+            return;
+
+          case 'Switch caudal-Flujostato':
+            const equipoEspecifico33 = [
+              { label: 'Switchs' },
+              { items: this.listDatos[0].equiposEspecificosSwitchCaudal },
+            ];
+
+            this.arrayfallas1 = equipoEspecifico33;
 
             this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
+            return;
+            case 'Hub-Switch Ethernet':
+              const equipoEspecifico34 = [
+                { label: 'Switch ethernet' },
+                { items: this.listDatos[0].equiposEspecificosSwitchEthernet },
+              ];
+
+              this.arrayfallas1 = equipoEspecifico34;
+
+              this.arraynewItemEvent.emit(this.arrayfallas1);
+              return;
+        case 'Fuente de tensión 24V':
+          const equipoEspecifico35 = [
+            { label: 'Fuentes 24V' },
+            { items: this.listDatos[0].equiposEspecificosFuentes24V },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico35;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
           return;
+        case 'Fuente de tensión 12V':
+          const equipoEspecifico36 = [
+            { label: 'Fuentes 12V' },
+            { items: this.listDatos[0].equiposEspecificosFuentes12V },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico36;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
+          return;
+
         case 'Boya de alta':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Boya de alta') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+          const equipoEspecifico37 = [
+            { label: 'Boyas' },
+            { items: this.listDatos[0].equiposEspecificosBoyas },
+          ];
+
+          this.arrayfallas1 = equipoEspecifico37;
+
+          this.arraynewItemEvent.emit(this.arrayfallas1);
+          return;
+
+          case 'Boya de baja':
+            const equipoEspecifico38 = [
+              { label: 'Boyas' },
+              { items: this.listDatos[0].equiposEspecificosBoyas },
+            ];
+
+            this.arrayfallas1 = equipoEspecifico38;
 
             this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
-        case 'Boya de baja':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Boya de baja') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+            return;
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
-        case 'Boya de muy alta':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Boya de muy alta') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+            case 'Boya de muy alta':
+              const equipoEspecifico39 = [
+                { label: 'Boyas' },
+                { items: this.listDatos[0].equiposEspecificosBoyas },
+              ];
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
-        case 'Boya de muy baja':
-          this.listDatos[0].equiposEspecificosFalla.forEach((elements: any) => {
-            if (elements.label == 'Boya de muy baja') {
-              elements.items.forEach((element: any) => {
-                this.arrayfallas1.push(element);
-              });
-            }
+              this.arrayfallas1 = equipoEspecifico39;
 
-            this.arraynewItemEvent.emit(this.arrayfallas1);
-          });
-          return;
+              this.arraynewItemEvent.emit(this.arrayfallas1);
+              return;
+              case 'Boya de muy baja':
+                const equipoEspecifico40 = [
+                  { label: 'Boyas' },
+                  { items: this.listDatos[0].equiposEspecificosBoyas },
+                ];
+
+                this.arrayfallas1 = equipoEspecifico40;
+
+                this.arraynewItemEvent.emit(this.arrayfallas1);
+                return;
+
+                case 'Monitor de tensión':
+                const equipoEspecifico41 = [
+                  { label: 'Monitores' },
+                  { items: this.listDatos[0].equiposEspecificosMonitores },
+                ];
+
+                this.arrayfallas1 = equipoEspecifico41;
+
+                this.arraynewItemEvent.emit(this.arrayfallas1);
+                return;
+                case 'Monitor de fase':
+                  const equipoEspecifico42 = [
+                    { label: 'Monitores' },
+                    { items: this.listDatos[0].equiposEspecificosMonitores },
+                  ];
+
+                  this.arrayfallas1 = equipoEspecifico42;
+
+                  this.arraynewItemEvent.emit(this.arrayfallas1);
+                  return;
+                  case 'Monitor de tensión y fase':
+                    const equipoEspecifico43 = [
+                      { label: 'Monitores' },
+                      { items: this.listDatos[0].equiposEspecificosMonitores },
+                    ];
+
+                    this.arrayfallas1 = equipoEspecifico43;
+
+                    this.arraynewItemEvent.emit(this.arrayfallas1);
+                    return;
+                    case 'Otro equipo':
+                      const equipoEspecifico44 = [
+                        { label: 'Otros equipos' },
+                        { items: this.listDatos[0].equiposEspecificosOtrosEquipos },
+                      ];
+
+                      this.arrayfallas1 = equipoEspecifico44;
+
+                      this.arraynewItemEvent.emit(this.arrayfallas1);
+                      return;
+
 
         default:
           return;
       }
     }
   }
+
+
+
+
 }

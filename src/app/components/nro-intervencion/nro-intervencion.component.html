@@ -1,23 +1,16 @@
 
-<form [formGroup]="nroIntervencionForm">
-<span class="p-float-label">
-  <p-calendar
-    dateFormat="yy/mm/dd"
-    styleClass="large"
-    display="chip"
-    formControlName="nroIntervencion"
-    (onSelect)="onNroIntervencionChanged()"
-  ></p-calendar>
-  <i
-  class="pi pi-calendar"
-  [ngClass]="{
-    'invalid-icon': nroIntervencionForm.get('nroIntervencion')?.invalid && (nroIntervencionForm.get('nroIntervencion')?.touched),
-    'valid-icon': nroIntervencionForm.get('nroIntervencion')?.valid && nroIntervencionForm.get('nroIntervencion')?.touched
-  }"
-  (click)="nroIntervencionForm.get('nroIntervencion')?.markAsTouched()"
-></i>
-  <label>N° DE INTERVENCIÓN (año/mes/N° Int)</label>
 
-</span>
-</form>
+    <span class="p-float-label" for="nroIntervencion">
+      <p-calendar
+
+     [showIcon]="true"
+      styleClass="large"
+      dateFormat="yy/mm/dd"
+      (onSelect)="onNroIntervencionChanged($event)"
+
+      [showClear]="true"
+      ></p-calendar>
+      <label>N° DE INTERVENCIÓN (año/mes/N° Int)</label>
+    </span>
+
 

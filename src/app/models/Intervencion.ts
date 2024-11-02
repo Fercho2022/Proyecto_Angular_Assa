@@ -1,19 +1,19 @@
 export class Intervencion {
 
-  id?: string;
-  nroIntervencion: string;
 
-  fechaAvisoIntervencion: string;
+  nroIntervencion: Date;
 
-  fechaFinIntervencion: string;
+  fechaAvisoIntervencion: Date;
+
+  fechaFinIntervencion: Date;
 
 
   constructor(
-    nroIntervencion: string,
+    nroIntervencion: Date,
 
-    fechaAvisoIntervencion: string,
+    fechaAvisoIntervencion: Date,
 
-    fechaFinIntervencion: string,
+    fechaFinIntervencion: Date,
 
   ) {
     this.nroIntervencion = nroIntervencion;

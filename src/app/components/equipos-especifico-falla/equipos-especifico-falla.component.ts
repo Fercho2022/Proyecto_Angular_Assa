@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-equipos-especifico-falla',
@@ -11,4 +12,18 @@ export class EquiposEspecificoFallaComponent {
   @Input() arrayfallas1!:any[];
   @Input() rellenarCampo!:string;
   @Input() etiquetaLabel!:string;
+
+
+
+  @Output() equipoEspecificoFallaIntervencionChanged = new EventEmitter();
+
+
+
+  onEquipoEspecificoFallaIntervencionChanged(event:any) {
+
+    this.equipoEspecificoFallaIntervencionChanged.emit(event.value);
+  }
+
+
+
 }
